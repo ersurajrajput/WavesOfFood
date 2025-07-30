@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ForgetPassActivity"
+    android:background="@color/light_dark">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/el1"
+        app:tint="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/back_btn_bg"
+        android:src="@drawable/back_logo" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/tv_forgetPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Forget Password"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_forgetpass1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_forgetPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:text="Please sign in to your existing account" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_forgetpass1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/white_login_bg"
+        android:layout_marginTop="32dp">
+
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="16sp"
+                android:text="EMAIL"
+
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:layout_below="@id/tv_email"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:hint="example@gmail.com"
+                android:paddingLeft="20dp"
+                android:background="@drawable/et_bg"
+                android:layout_marginTop="10dp" />
+
+
+
+
+            <Button
+                android:id="@+id/btn_sendcode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/et_email"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/orange_btn_bg"
+                android:textColor="@color/white"
+
+
+                android:text="SEND CODE" />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@id/tv_forgetPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verification"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"/>
+        <TextView
+            android:id="@+id/tv_wehavesentotp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We have sent a OTP to your email"
+            android:textColor="@color/white"
+            android:layout_below="@id/tv_forgetPass"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/tv_useremail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="example@gmail.com"
+            android:layout_below="@id/tv_wehavesentotp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_useremail"
+            android:background="@drawable/white_login_bg"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/tv_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="16sp"
+                android:text="OTP"
+
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="16sp"
+                android:text="Resend In 59"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="32dp"
+
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tv_otp"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/et_digit1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/et_bg"/>
+                <EditText
+                    android:id="@+id/et_digit2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/et_bg"/>
+                <EditText
+                    android:id="@+id/et_digit3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/et_bg"/>
+                <EditText
+                    android:id="@+id/et_digit4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/et_bg"/>
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/ll_otp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="20dp"
+                android:text="Verify"
+                android:textColor="@color/white"
+                android:background="@drawable/orange_btn_bg"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.UserHomeActivity">
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <ImageButton
+            android:id="@+id/iv_menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back_btn_bg"
+            android:backgroundTint="@color/light_gray"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/menu_logo" />
+
+        <TextView
+            android:id="@+id/tv_deliverto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="9dp"
+            android:layout_toEndOf="@+id/iv_menu"
+
+            android:text="DELIVER TO"
+            android:textColor="@color/light_orange"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_deliverto"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/iv_menu"
+            android:text="Halal Lab office"
+            android:textAllCaps="true"
+            android:drawableEnd="@drawable/polygon_1"
+            android:drawablePadding="5dp"
+            android:textColor="@color/primary_text_color"
+            android:drawableTint="@color/primary_text_color"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/shopping_bag"
+            android:background="@drawable/back_btn_bg"
+            android:backgroundTint="@color/black"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="25dp">
+        <TextView
+            android:id="@+id/tv_hey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hey Halal,"
+            android:textColor="@color/primary_text_color"/>
+        <TextView
+            android:id="@+id/tv_greetings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good Afternoon!"
+            android:layout_toEndOf="@id/tv_hey"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl2"
+        android:background="@drawable/et_bg"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/search_logo"
+        android:drawableTint="@color/light_gray"
+        android:paddingLeft="20dp"
+        android:hint="Search dishes, restaurants"
+        android:drawablePadding="10dp"
+        android:textColorHint="@color/hint_color"/>
+    <RelativeLayout
+        android:id="@+id/rl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_search"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp">
+        <TextView
+            android:id="@+id/tv_allCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="All Categories"/>
+        <TextView
+            android:id="@+id/tv_seeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See All"
+            android:drawableEnd="@drawable/forword_vector"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="10dp"/>
+
+        <HorizontalScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_seeAll"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/cat_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:layout_below="@id/tv_allCategories">
+            <include layout="@layout/cat_items"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/rl3">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:text="Open Restaurants"/>
+        <TextView
+            android:id="@+id/tv_seeAllRestorents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See All"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/forword_vector"
+            android:drawablePadding="10dp"/>
+
+    </RelativeLayout>
+    <ScrollView
+        android:id="@+id/res_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:id="@+id/restorents_conatiner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/restorent_items"/>
+            <include layout="@layout/restorent_items"/>
+            <include layout="@layout/restorent_items"/>
+            <include layout="@layout/restorent_items"/>
+            <include layout="@layout/restorent_items"/>
+            <include layout="@layout/restorent_items"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
