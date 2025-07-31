@@ -12,7 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WavesOfFood">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.user.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.OnBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

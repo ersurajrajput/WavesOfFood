@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/iv_el1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/el1"
+        android:translationY="-150dp"
+        android:translationX="-150dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+
+        android:text="Waves Of Food"/>
+    <ImageView
+        android:id="@+id/iv_el2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/el2"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:translationY="230dp"
+        android:translationX="200dp"
+        />
+
+
+</RelativeLayout>
