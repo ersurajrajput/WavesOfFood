@@ -12,8 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WavesOfFood">
         <activity
-            android:name=".ui.user.SignupActivity"
+            android:name=".ui.user.ForgetPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.user.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.SignupActivity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.user.OnBoardingActivity"
             android:exported="false" />

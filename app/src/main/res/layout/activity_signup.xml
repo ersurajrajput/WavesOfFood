@@ -1,10 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_dark"
     tools:context=".ui.user.SignupActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/el1"
+                app:tint="@color/white"
+                android:translationX="-150dp"
+                android:translationY="-150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vector_line"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:id="@+id/txt_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="150dp"
+                android:fontFamily="@font/sen_bold"
+                android:text="Sing Up"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+            <TextView
+                android:id="@+id/txt_signup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please sign up to get started"
+                android:fontFamily="@font/sen_regular"
+                android:textColor="@color/white"
+                android:layout_below="@id/txt_signup"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_bottom_layout_bg"
+                android:minHeight="600dp"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/txt_signup1">
+                <EditText
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:layout_alignParentStart="true"
+                    android:textSize="15sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="32dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/text_light_gray"/>
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_name"
+                    android:background="@drawable/et_bg"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="John doe"
+                    android:layout_alignParentStart="true"
+                    android:drawableStart="@drawable/user"
+                    android:drawableTint="@color/hint_color"
+                    android:paddingStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:paddingEnd="20dp"/>
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL"
+                    android:layout_alignParentStart="true"
+                    android:textSize="15sp"
+                    android:layout_below="@id/et_name"
+                    android:layout_marginLeft="32dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/text_light_gray"/>
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_email"
+                    android:background="@drawable/et_bg"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="example@gmail.com"
+                    android:layout_alignParentStart="true"
+                    android:drawableStart="@drawable/email"
+                    android:drawableTint="@color/hint_color"
+                    android:paddingStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:paddingEnd="20dp"/>
+                <TextView
+                    android:id="@+id/tv_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PASSWORD"
+                    android:layout_alignParentStart="true"
+                    android:textSize="15sp"
+                    android:layout_below="@id/et_email"
+                    android:layout_marginLeft="32dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/text_light_gray"/>
+                <EditText
+                    android:id="@+id/et_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_pass"
+                    android:background="@drawable/et_bg"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="********"
+                    android:layout_alignParentStart="true"
+                    android:drawableStart="@drawable/lock_svgrepo_com"
+                    android:drawableEnd="@drawable/eye_off"
+                    android:drawableTint="@color/hint_color"
+                    android:paddingStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:paddingEnd="20dp"/>
+                <TextView
+                    android:id="@+id/tv_cpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Re-Type Password"
+                    android:textAllCaps="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="15sp"
+                    android:layout_below="@id/et_pass"
+                    android:layout_marginLeft="32dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/text_light_gray"/>
+                <EditText
+                    android:id="@+id/et_cpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_cpass"
+                    android:background="@drawable/et_bg"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="********"
+                    android:layout_alignParentStart="true"
+                    android:drawableStart="@drawable/lock_svgrepo_com"
+                    android:drawableEnd="@drawable/eye_off"
+                    android:drawableTint="@color/hint_color"
+                    android:paddingStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:paddingEnd="20dp"/>
+                <RelativeLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/et_cpass"
+
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_alignParentStart="true">
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remember me"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/sen_regular"/>
+
+
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/btn_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/ll"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_alignParentStart="true"
+                    android:text="Sign Up"
+                    android:textColor="@color/white"
+                    android:background="@drawable/orange_btn_bg"
+
+                    android:fontFamily="@font/sen_bold"/>
+                <RelativeLayout
+                    android:id="@+id/rl1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_signup"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_alignParentStart="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="already  have an account?"
+                        android:fontFamily="@font/sen_regular"
+                        android:textSize="16sp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"/>
+                    <TextView
+                        android:id="@+id/tv_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Login"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/orange"
+                        android:textAllCaps="true"
+                        android:layout_marginRight="32dp"
+                        android:fontFamily="@font/sen_bold"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/txt_OR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OR"
+                    android:layout_below="@id/rl1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_OR"
+
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/g"
+                        app:tint="@color/white"
+                        android:background="@drawable/google"/>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/fb"/>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/x"/>
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
