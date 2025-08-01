@@ -12,7 +12,7 @@ import com.example.wavesoffood.R
 import com.example.wavesoffood.model.CategoriesModel
 
 class CatAdapter(val requiredContext : Context, private val catList:ArrayList<CategoriesModel>, private val onItemClick: (CategoriesModel) -> Unit): RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
-
+    private var selectedPosition = -1
     class CatViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
         val catName : TextView = itemView.findViewById(R.id.cat_name)
         val catImg : ImageView = itemView.findViewById(R.id.cat_img)
@@ -22,6 +22,7 @@ class CatAdapter(val requiredContext : Context, private val catList:ArrayList<Ca
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
 
         val view  = LayoutInflater.from(parent.context).inflate(R.layout.cat_item,parent,false)
+
         return  CatViewHolder(view)
     }
 
@@ -34,9 +35,19 @@ class CatAdapter(val requiredContext : Context, private val catList:ArrayList<Ca
         holder.catName.text = catList[position].cat_name
         Glide.with(holder.itemView.context).load(catList[position].cat_img).placeholder(R.drawable.sample_img).into(holder.catImg)
 
+        if (selectedPosition == position) {
+            holder.itemView.setBackgroundResource(R.drawable.selected_bg) // custom background for selected
+        }else {
+            holder.itemView.setBackgroundResource(R.drawable.cat_item_bg_rec) // Reset to default
+        }
         val currentItem = catList[position]
         holder.itemView.setOnClickListener {
+            val previousPosition = selectedPosition
+            selectedPosition = holder.adapterPosition
+            notifyItemChanged(previousPosition)
+            notifyItemChanged(position)
             onItemClick(currentItem) // returns the clicked item
+
         }
     }
 

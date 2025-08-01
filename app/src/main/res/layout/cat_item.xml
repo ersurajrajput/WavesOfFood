@@ -4,7 +4,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/cat_item_bg_rec"
-    android:layout_marginEnd="10dp"
+    android:id="@+id/main_card"
+    android:layout_marginEnd="30dp"
     android:padding="10dp"
 
     xmlns:app="http://schemas.android.com/apk/res-auto">

@@ -1,6 +1,10 @@
 package com.example.wavesoffood.ui.user
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +13,24 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wavesoffood.Adapters.CatAdapter
 import com.example.wavesoffood.Adapters.ResAdapter
+import com.example.wavesoffood.BuildConfig
 import com.example.wavesoffood.R
 import com.example.wavesoffood.model.CategoriesModel
 import com.example.wavesoffood.model.RestaurantModel
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 import java.util.zip.Inflater
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var resAdapter: ResAdapter
+    private lateinit var catAdapter: CatAdapter
+    private lateinit var resList: ArrayList<RestaurantModel>
+    private lateinit var catList: ArrayList<CategoriesModel>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,31 +40,78 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val restorentRecyclerView : RecyclerView = findViewById(R.id.restorentRecyclerView)
-        val catRecyclerView : RecyclerView = findViewById(R.id.categoryRecyclerView)
-        val catList = ArrayList<CategoriesModel>()
-        val resList = ArrayList<RestaurantModel>()
+        //Local variables
+        var et_search  = findViewById<EditText>(R.id.et_search)
+        // Firebase Initialization
+        FirebaseApp.initializeApp(applicationContext)
+        val db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
+        val myResRef = db.getReference("res")
+        val myCatRef = db.getReference("cat")
 
+        // RecyclerView initialization
+        val restorentRecyclerView: RecyclerView = findViewById(R.id.restorentRecyclerView)
+        val catRecyclerView: RecyclerView = findViewById(R.id.categoryRecyclerView)
 
-
-
-        for(i in 1..5){
-            val cimg = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            catList.add(CategoriesModel( i.toString(),"Burgers",cimg))
-            val rimg :String = "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            resList.add(RestaurantModel(i.toString(),"Ladli Restorent","","Samosa - Pizza - Dosa","4.7","Free","20 min"))
+        resList = ArrayList()
+        catList = ArrayList()
+        resAdapter = ResAdapter(applicationContext, resList) { clickedRestaurant ->
+            Toast.makeText(this, clickedRestaurant.toString(), Toast.LENGTH_SHORT).show()
         }
 
-
-
-
-
-
-        catRecyclerView.adapter = CatAdapter(applicationContext,catList){ clickedCategory ->
-            Toast.makeText(applicationContext, clickedCategory.toString(), Toast.LENGTH_SHORT).show()
+        catAdapter = CatAdapter(applicationContext, catList) { clickedCategory ->
+            Toast.makeText(this, clickedCategory.toString(), Toast.LENGTH_SHORT).show()
         }
-        restorentRecyclerView.adapter = ResAdapter(applicationContext,resList){ clickedCategory ->
-            Toast.makeText(applicationContext, clickedCategory.toString(), Toast.LENGTH_SHORT).show()
+
+        restorentRecyclerView.adapter = resAdapter
+        catRecyclerView.adapter = catAdapter
+
+
+        myResRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                resList.clear()
+                for (res in snapshot.children) {
+                    val restaurant = res.getValue(RestaurantModel::class.java)
+                    restaurant?.let {
+                        resList.add(it)
+
+                        resAdapter.notifyDataSetChanged()
+
+                    }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+        myCatRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                catList.clear()
+                for (cat in snapshot.children) {
+                    val category = cat.getValue(CategoriesModel::class.java)
+                    category?.let {
+                        catList.add(it)
+
+                        catAdapter.notifyDataSetChanged()
+
+                    }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        /// Search btn logic
+        et_search.setOnClickListener {
+
+            val intent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(intent)
         }
 
     }
