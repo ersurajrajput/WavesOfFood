@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cencel_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:cardCornerRadius="50dp">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/c_btn" />
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/discount_offer_bg">
+
+
+<ImageView
+    android:id="@+id/img_element"
+    android:layout_width="400dp"
+    android:layout_height="500dp"
+    android:src="@drawable/elements"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true"
+   android:translationY="-100dp"/>
+    <TextView
+        android:id="@+id/tv_hurry_offer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hurry Offers!"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sen_bold"
+        android:textSize="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/cupon_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#1243CD2"
+        android:textColor="@color/white"
+        android:layout_below="@id/tv_hurry_offer"
+        android:layout_centerHorizontal="true"
+        android:textSize="60dp"
+        android:fontFamily="@font/sen_regular"
+
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/percent_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use the cupon get 25% discount"
+        android:textColor="@color/white"
+        android:layout_below="@id/cupon_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/sen_regular"
+        android:textSize="25dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/white_hollow_btn"
+        android:layout_below="@id/percent_discount"
+         android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Got it"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sen_bold"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

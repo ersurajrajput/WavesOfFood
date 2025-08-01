@@ -61,25 +61,28 @@
                 android:layout_below="@id/txt_login"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/txt_login2"
+                android:layout_marginTop="51dp"
                 android:background="@drawable/white_bottom_layout_bg"
-                android:minHeight="800dp"
-                android:layout_marginTop="50dp"
-                android:layout_below="@id/txt_login2">
+                android:minHeight="800dp">
+
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
-                    android:text="EMAIL"
+                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="15dp"
                     android:fontFamily="@font/sen_regular"
-                    android:textColor="@color/text_light_gray"/>
+                    android:text="EMAIL"
+                    android:textColor="@color/text_light_gray"
+                    android:textSize="15dp" />
+
                 <EditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
@@ -87,155 +90,169 @@
                     android:layout_below="@id/tv_email"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginTop="10dp"
-                    android:hint="example@gmail.com"
-                    android:textColorHint="@color/hint_color"
-                    android:fontFamily="@font/sen_regular"
-                    android:textSize="15sp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="20dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@drawable/et_bg"
+                    android:drawableStart="@drawable/email"
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/hint_color"
-                    android:drawableStart="@drawable/email"
-                    android:background="@drawable/et_bg"/>
+                    android:fontFamily="@font/sen_regular"
+                    android:hint="example@gmail.com"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/tv_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/et_email"
                     android:layout_alignParentStart="true"
-                    android:text="PASSWORD"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="15sp"
-                    android:layout_below="@id/et_email"
                     android:fontFamily="@font/sen_regular"
-                    android:textColor="@color/text_light_gray"/>
+                    android:text="PASSWORD"
+                    android:textColor="@color/text_light_gray"
+                    android:textSize="15sp" />
+
                 <EditText
                     android:id="@+id/et_pass"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_below="@id/tv_pass"
-                    android:layout_marginTop="10dp"
+                    android:layout_alignParentStart="true"
                     android:layout_marginLeft="32dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="32dp"
                     android:background="@drawable/et_bg"
-                    android:hint="*******"
                     android:drawableStart="@drawable/lock_svgrepo_com"
-                    android:drawableTint="@color/hint_color"
-                    android:drawablePadding="10dp"
-                    android:paddingLeft="10dp"
                     android:drawableEnd="@drawable/eye_off"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/hint_color"
+                    android:hint="*******"
+                    android:paddingLeft="10dp"
                     android:paddingEnd="20dp"
-                    android:layout_alignParentStart="true"
-                    android:textColorHint="@color/hint_color"/>
+                    android:textColorHint="@color/hint_color" />
+
                 <RelativeLayout
                     android:id="@+id/ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_below="@id/et_pass"
+                    android:layout_alignParentStart="true"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
                     android:layout_marginTop="32dp"
-                    android:layout_alignParentStart="true">
-                   <CheckBox
-                       android:id="@+id/checkbox"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Remember me"
-                       android:layout_alignParentStart="true"
-                       android:layout_alignParentTop="true"
-                       android:fontFamily="@font/sen_regular"/>
+                    android:layout_marginRight="32dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/sen_regular"
+                        android:text="Remember me" />
+
                     <TextView
                         android:id="@+id/tv_forgetPass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Forgot Password ?"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:textColor="@color/orange"
-                        android:fontFamily="@font/sen_bold"/>
+                        android:fontFamily="@font/sen_bold"
+                        android:text="Forgot Password ?"
+                        android:textColor="@color/orange" />
 
                 </RelativeLayout>
+
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_below="@id/ll"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
-                    android:layout_marginTop="32dp"
                     android:layout_alignParentStart="true"
-                    android:text="Log in"
-                    android:textColor="@color/white"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="32dp"
                     android:background="@drawable/orange_btn_bg"
+                    android:fontFamily="@font/sen_bold"
+                    android:text="Log in"
 
-                    android:fontFamily="@font/sen_bold"/>
-             <RelativeLayout
-                 android:id="@+id/rl1"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@id/btn_login"
-              android:layout_marginLeft="32dp"
-                 android:layout_marginRight="32dp"
-                 android:layout_marginTop="50dp"
-                 android:layout_alignParentStart="true">
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Don’t have an account?"
-                     android:fontFamily="@font/sen_regular"
-                     android:textSize="16sp"
-                     android:layout_alignParentStart="true"
-                     android:layout_alignParentTop="true"/>
-                 <TextView
-                     android:id="@+id/tv_singup"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="Sign Up"
-                     android:layout_alignParentEnd="true"
-                     android:textColor="@color/orange"
-                     android:textAllCaps="true"
-                     android:fontFamily="@font/sen_bold"
-                     android:layout_centerVertical="true"/>
-             </RelativeLayout>
-            <TextView
-                android:id="@+id/txt_OR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OR"
-                android:layout_below="@id/rl1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"/>
+                    android:textColor="@color/white" />
+
+                <RelativeLayout
+                    android:id="@+id/rl1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_login"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="32dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/sen_regular"
+                        android:text="Don’t have an account?"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_singup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/sen_bold"
+                        android:text="Sign Up"
+                        android:textAllCaps="true"
+                        android:textColor="@color/orange" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txt_OR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="OR" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_OR"
 
-                    android:orientation="horizontal"
-                    android:padding="10dp"
-
+                    android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:layout_centerHorizontal="true">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/g"
-                        app:tint="@color/white"
-                        android:background="@drawable/google"/>
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/fb"/>
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/x"/>
-                </LinearLayout>
 
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
+                        android:padding="15dp"
+                        android:background="@drawable/google"
+
+                        android:src="@drawable/g" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/fb" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/x" />
+                </LinearLayout>
 
 
             </RelativeLayout>

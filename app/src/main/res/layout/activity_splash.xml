@@ -17,7 +17,14 @@
         android:src="@drawable/el1"
         android:translationY="-150dp"
         android:translationX="-150dp"/>
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/app_logo"
+    android:layout_above="@id/wof"
+    android:layout_centerHorizontal="true"/>
     <TextView
+        android:id="@+id/wof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"

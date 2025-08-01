@@ -2,18 +2,28 @@ package com.example.wavesoffood
 
 import android.content.Intent
 import android.os.Bundle
+import com.example.wavesoffood.BuildConfig
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.BuildCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.ui.user.LoginActivity
 import com.example.wavesoffood.ui.user.OnBoardingActivity
 
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.database
+
 class SplashActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,12 +35,30 @@ class SplashActivity : AppCompatActivity() {
         }
 
 
+//        FirebaseApp.initializeApp(applicationContext)
+//        val db = FirebaseDatabase.getInstance()
+//        val userDBRef = db.getReference("users")
+//        val userData = mapOf(
+//            "name" to "Suraj",
+//            "email" to "suraj@example.com"
+//        )
+//
+//        userDBRef.child("user1").setValue(userData)
+//            .addOnSuccessListener {
+//                Toast.makeText(this, "Data written successfully", Toast.LENGTH_SHORT).show()
+//            }
+//            .addOnFailureListener {
+//                Toast.makeText(this, "Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+//            }
+//
         Handler(Looper.getMainLooper()).postDelayed({
             // Fade-in animation for el1
             val intent = Intent(applicationContext,OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)
+
+
 
 
 

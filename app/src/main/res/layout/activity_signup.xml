@@ -272,7 +272,8 @@
                         android:layout_height="50dp"
                         android:layout_marginRight="20dp"
                         android:src="@drawable/g"
-                        app:tint="@color/white"
+                        android:padding="15dp"
+
                         android:background="@drawable/google"/>
                     <ImageView
                         android:layout_width="50dp"

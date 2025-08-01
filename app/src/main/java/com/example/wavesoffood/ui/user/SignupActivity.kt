@@ -1,6 +1,8 @@
 package com.example.wavesoffood.ui.user
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -10,7 +12,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.wavesoffood.BuildConfig
 import com.example.wavesoffood.R
+import com.example.wavesoffood.model.UserModel
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +33,11 @@ class SignupActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE)
+        FirebaseApp.initializeApp(applicationContext)
+        val db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
+        val myref = db.getReference("users")
+
         val et_name = findViewById<EditText>(R.id.et_name)
         val et_email = findViewById<EditText>(R.id.et_email)
         val et_pass = findViewById<EditText>(R.id.et_pass)
@@ -43,9 +59,45 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Password Do Not Match",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val intent = Intent(applicationContext,MainActivity::class.java)
-            startActivity(intent)
 
+           val usermodel = UserModel()
+            usermodel.name = name
+            usermodel.email = email
+            usermodel.pass = pass
+            usermodel.user_profile = "default.png"
+
+            val emailkey = email.replace(".","_")
+            val myuserRef = myref.child(emailkey)
+            myuserRef.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        Toast.makeText(applicationContext, "User Exist", Toast.LENGTH_SHORT).show()
+                        return;
+                    }else{
+                        myuserRef.setValue(usermodel).addOnCompleteListener { task ->  // task is of type Task<Void>
+                            if (task.isSuccessful) {
+                                val editor = sharedPreferences.edit()
+                                editor.putString("name",name)
+                                editor.putString("email",email)
+                                editor.putString("profile_img",usermodel.user_profile)
+                                editor.putBoolean("IsLoggedIn",true)
+                                editor.apply()
+                                Toast.makeText(applicationContext, "Saved", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(applicationContext,MainActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(applicationContext, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
+
+                }
+            })
 
         }
         tv_login.setOnClickListener{

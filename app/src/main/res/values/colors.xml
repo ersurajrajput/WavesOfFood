@@ -8,4 +8,5 @@
     <color name="text_light_gray">#32343E</color>
     <color name="et_bg_color">#F0F5FA</color>
     <color name="hint_color">#A0A5BA</color>
+    <color name="menu_gray">#ECF0F4</color>
 </resources>

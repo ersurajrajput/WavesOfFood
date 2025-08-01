@@ -1,10 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.user.MainActivity">
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true">
+
+            <ImageButton
+                android:id="@+id/ib_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/menu_logo"
+                android:background="@drawable/cercle_bg"/>
+            <TextView
+                android:id="@+id/tv_deliverto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deliver to"
+                android:textAllCaps="true"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/sen_bold"
+                android:textSize="15dp"
+                android:layout_toEndOf="@id/ib_menu"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/tv_usernameandadd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suraj Lab office"
+                android:textAllCaps="true"
+                android:layout_below="@id/tv_deliverto"
+                android:layout_toEndOf="@id/ib_menu"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/sen_regular"
+                android:drawableEnd="@drawable/polygon_1"
+                android:paddingRight="5dp"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/hint_color"
+                android:textColor="@color/hint_color"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/cercle_bg"
+                android:src="@drawable/bag"
+                android:backgroundTint="@color/black"
+                app:tint="@color/white"/>
+
+
+        </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ll"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sen_regular"
+            android:textSize="20sp"
+            android:text="Hey Suraj,"/>
+        <TextView
+            android:id="@+id/tv_greetigs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good Afternoon!"
+            android:textSize="20sp"
+            android:layout_marginStart="4dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/sen_bold"/>
+
+    </LinearLayout>
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/ll1"
+            android:background="@drawable/et_bg"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="20dp"
+            android:drawableStart="@drawable/search_logo"
+            android:drawableTint="@color/hint_color"
+            android:drawablePadding="20sp"
+            android:hint="Search dishes, restaurants"
+            android:textColorHint="@color/hint_color"
+            android:paddingEnd="20dp"/>
+        <RelativeLayout
+            android:id="@+id/rl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_below="@id/et_search"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Categories"
+                android:fontFamily="@font/sen_regular"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"/>
+            <TextView
+                android:id="@+id/tv_seeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See All"
+                android:layout_alignParentEnd="true"
+                android:textSize="20sp"
+                android:drawableEnd="@drawable/vector_for"
+                android:drawablePadding="10dp"/>
+
+
+
+        </RelativeLayout>
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/rl2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="32dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_below="@id/rl2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="16dp"/>
+        </HorizontalScrollView>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hsv"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open Restaurants"
+                android:textSize="20sp"
+                android:fontFamily="@font/sen_regular"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See All"
+                android:fontFamily="@font/sen_regular"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:drawableEnd="@drawable/vector_for"
+                android:drawablePadding="10dp"/>
+        </RelativeLayout>
+        <ScrollView
+            android:id="@+id/sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/rl3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/restorentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_below="@id/rl3"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="16dp"/>
+        </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
