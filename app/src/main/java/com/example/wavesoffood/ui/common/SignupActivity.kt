@@ -46,7 +46,7 @@ class SignupActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val sharedPreferences = getSharedPreferences("my_app_preferences", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
         FirebaseApp.initializeApp(applicationContext)
         val db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
         val usersRef = db.getReference("users")
@@ -202,10 +202,12 @@ class SignupActivity : AppCompatActivity() {
 
                                     val intent = Intent(applicationContext, UserHome::class.java)
                                     startActivity(intent)
+                                    finish()
                                 }else if(utype.equals("Restaurant")){
 
                                     val intent = Intent(applicationContext, RestaurantHomeActivity::class.java)
                                     startActivity(intent)
+                                    finish()
                                 }
 
                             } else {

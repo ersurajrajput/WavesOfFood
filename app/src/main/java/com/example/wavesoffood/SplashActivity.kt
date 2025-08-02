@@ -15,6 +15,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.ui.common.LoginActivity
 import com.example.wavesoffood.ui.common.OnBoardingActivity
+import com.example.wavesoffood.ui.restaurant.RestaurantHomeActivity
+import com.example.wavesoffood.ui.user.UserHome
 
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
@@ -33,6 +35,8 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
 
 
 //        FirebaseApp.initializeApp(applicationContext)
@@ -53,11 +57,27 @@ class SplashActivity : AppCompatActivity() {
 //
         Handler(Looper.getMainLooper()).postDelayed({
             // Fade-in animation for el1
-            val intent = Intent(applicationContext,OnBoardingActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 2000)
+            if (sharedPreferences.getBoolean("IsLoggedIn",false)){
+                var userType = sharedPreferences.getString("user_type",null)
+                if (userType!=null){
+                    if (userType.equals("Restaurant")){
+                        var intent = Intent(applicationContext, RestaurantHomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }else if (userType.equals("User")){
+                        var intent = Intent(applicationContext, UserHome::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
 
+            }else{
+                var intent = Intent(applicationContext, OnBoardingActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+        }, 2000)
 
 
 

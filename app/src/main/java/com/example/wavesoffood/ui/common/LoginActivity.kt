@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
         ///firebase
-        val sharedPreferences = getSharedPreferences("my_app_preferences", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
         FirebaseApp.initializeApp(applicationContext)
         val db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
         val usersRef = db.getReference("users")
@@ -54,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         var isPassVisible = false // Track password visibility
+        et_pass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
         et_pass.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {

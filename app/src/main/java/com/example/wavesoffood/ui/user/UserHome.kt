@@ -3,11 +3,13 @@ package com.example.wavesoffood.ui.user
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wavesoffood.Adapters.CatAdapter
 import com.example.wavesoffood.Adapters.ResAdapter
@@ -48,6 +50,8 @@ class UserHome : AppCompatActivity() {
         // RecyclerView initialization
         val restorentRecyclerView: RecyclerView = findViewById(R.id.restorentRecyclerView)
         val catRecyclerView: RecyclerView = findViewById(R.id.categoryRecyclerView)
+        var drawerLayout : DrawerLayout = findViewById(R.id.main)
+        var ibMenu : ImageButton  = findViewById(R.id.ib_menu)
 
         resList = ArrayList()
         catList = ArrayList()
@@ -109,6 +113,10 @@ class UserHome : AppCompatActivity() {
 
             val intent = Intent(applicationContext, SearchActivity::class.java)
             startActivity(intent)
+        }
+
+        ibMenu.setOnClickListener {
+            drawerLayout.open()
         }
 
     }
