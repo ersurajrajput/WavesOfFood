@@ -14,37 +14,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WavesOfFood">
         <activity
+            android:name=".ui.restaurant.RestaurantHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.FoodDetailsActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".ui.user.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.ForgetPasswordActivity"
+            android:name=".ui.common.ForgetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.MainActivity"
+            android:name=".ui.user.UserHome"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.common.SignupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
-            android:name=".ui.user.SignupActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".ui.user.OnBoardingActivity"
+            android:name=".ui.common.OnBoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.LoginActivity"
+            android:name=".ui.common.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

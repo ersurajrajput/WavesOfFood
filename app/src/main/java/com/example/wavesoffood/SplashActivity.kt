@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.BuildCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.wavesoffood.ui.user.LoginActivity
-import com.example.wavesoffood.ui.user.OnBoardingActivity
+import com.example.wavesoffood.ui.common.LoginActivity
+import com.example.wavesoffood.ui.common.OnBoardingActivity
 
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp

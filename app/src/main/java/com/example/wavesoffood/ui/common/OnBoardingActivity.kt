@@ -1,4 +1,4 @@
-package com.example.wavesoffood.ui.user
+package com.example.wavesoffood.ui.common
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,7 +22,7 @@ class OnBoardingActivity : AppCompatActivity() {
         val tv_skip = findViewById<TextView>(R.id.btn_skip)
 
         tv_skip.setOnClickListener{
-            val intent = Intent(applicationContext,LoginActivity::class.java)
+            val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
         }
 

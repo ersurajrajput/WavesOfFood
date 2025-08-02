@@ -1,9 +1,7 @@
 package com.example.wavesoffood.ui.user
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -23,9 +21,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import java.util.zip.Inflater
 
-class MainActivity : AppCompatActivity() {
+class UserHome : AppCompatActivity() {
     private lateinit var resAdapter: ResAdapter
     private lateinit var catAdapter: CatAdapter
     private lateinit var resList: ArrayList<RestaurantModel>

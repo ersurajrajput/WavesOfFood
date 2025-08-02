@@ -1,4 +1,4 @@
-package com.example.wavesoffood.ui.user
+package com.example.wavesoffood.ui.common
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

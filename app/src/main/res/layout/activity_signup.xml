@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_dark"
-    tools:context=".ui.user.SignupActivity">
+    tools:context=".ui.common.SignupActivity">
 
 
     <ScrollView
@@ -200,14 +200,38 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="32dp"
                     android:layout_alignParentStart="true">
-                    <CheckBox
-                        android:id="@+id/checkbox"
+                    <TextView
+                        android:id="@+id/tvUserType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Remember me"
+                        android:text="User Type ?"
+                        android:textAllCaps="true"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:fontFamily="@font/sen_regular"/>
+                        android:textSize="15sp"
+                        android:fontFamily="@font/sen_regular"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/text_light_gray"/>
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_below="@id/tvUserType"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/rbUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="User"/>
+                        <RadioButton
+                            android:id="@+id/rbRestaurant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Restaurant"/>
+
+                    </RadioGroup>
+
 
 
                 </RelativeLayout>
