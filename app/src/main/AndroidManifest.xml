@@ -12,7 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WavesOfFood">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.res.ResSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.res.ResLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OnBoardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.users.UserSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.users.UserLoginActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

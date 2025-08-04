@@ -1,11 +1,22 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
 }
+val localProperties = Properties().apply {
+    load(File(rootProject.rootDir, "local.properties").inputStream())
+}
+
 
 android {
     namespace = "com.example.wavesoffood"
     compileSdk = 36
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.wavesoffood"
@@ -15,6 +26,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        buildConfigField(
+            "String",
+            "FIREBASE_DB_URL",
+            "\"${localProperties["firebaseDbUrl"]}\""
+        )
+
     }
 
     buildTypes {
@@ -42,6 +61,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
