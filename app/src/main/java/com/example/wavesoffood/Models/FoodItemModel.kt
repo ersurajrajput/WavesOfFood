@@ -8,5 +8,4 @@ data class FoodItemModel(
     var foodImg : String ? = null,
     var resId : String ? = null,
 
-
 )

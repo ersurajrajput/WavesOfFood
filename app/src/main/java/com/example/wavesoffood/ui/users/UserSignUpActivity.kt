@@ -161,10 +161,12 @@ class UserSignUpActivity : AppCompatActivity() {
                         myUserRef.setValue(userModel).addOnCompleteListener { task ->
                             if (task.isSuccessful){
                                 var editor = sharedPreferences.edit()
-                                editor.putBoolean("IsloggedInt",true)
-                                editor.putString("userName",userName)
-                                editor.putString("userEmail",userEmail)
-                                editor.putString("userImg",defaultUserImg)
+                                editor.putBoolean("isLoggedIn",true)
+                                editor.putString("userName",userModel.userName)
+                                editor.putString("userID",userModel.id)
+                                editor.putString("userEmail",userModel.userEmail)
+                                editor.putString("userImg",userModel.userImg)
+                                editor.putString("uType","user")
                                 editor.apply()
                                 Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
                                 var intent = Intent(applicationContext, UserHomeActivity::class.java)

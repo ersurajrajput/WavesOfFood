@@ -11,9 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.wavesoffood.Models.ResModel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityResLoginBinding
 import com.example.wavesoffood.databinding.ActivityUserLoginBinding
+import com.google.firebase.BuildConfig
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 
 class ResLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResLoginBinding
@@ -28,11 +36,57 @@ class ResLoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        FirebaseApp.initializeApp(applicationContext)
+        var db = Firebase.database(com.example.wavesoffood.BuildConfig.FIREBASE_DB_URL)
+        var dbResRef = db.getReference("res")
+        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+        binding.btnLogin.setOnClickListener {
+            var email = binding.etResEmail.text.toString().trim()
+            var pass = binding.etResPass.text.toString().trim()
+            if (email.isEmpty()||pass.isEmpty()){
+                Toast.makeText(applicationContext,"All Field Are Required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            var id = email.replace(".","_")
+            dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                       var resModel = snapshot.getValue(ResModel::class.java)
+                        if (resModel!=null && resModel.resPass.equals(pass)){
+                                //login pased
+                            var editor = sharedPreferences.edit()
+                            editor.putBoolean("isLoggedIn",true)
+                            editor.putString("resName",resModel.resName)
+                            editor.putString("resID",resModel.id)
+                            editor.putString("resEmail",resModel.resName)
+                            editor.putString("resImg",resModel.resName)
+                            editor.putString("uType","res")
+                            editor.apply()
+                            var intent = Intent(applicationContext, ResHomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }else{
+                            Toast.makeText(applicationContext,"Wrong Password", Toast.LENGTH_SHORT).show()
+
+                        }
+                    }else{
+                        Toast.makeText(applicationContext,"Wrong Email", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(applicationContext,error.message, Toast.LENGTH_SHORT).show()
+
+                }
+
+            })
+
+        }
         binding.tvSingup.setOnClickListener {
             var intent = Intent(applicationContext, ResSignUpActivity::class.java)
             startActivity(intent)
         }
-
 
 
 

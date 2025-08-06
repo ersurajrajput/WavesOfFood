@@ -11,9 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.wavesoffood.BuildConfig
+import com.example.wavesoffood.Models.ResModel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityResLoginBinding
 import com.example.wavesoffood.databinding.ActivityResSignUpBinding
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 
 class ResSignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResSignUpBinding
@@ -28,6 +36,15 @@ class ResSignUpActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //firebase
+        FirebaseApp.initializeApp(applicationContext)
+        var db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
+        var dbResRef = db.getReference("res")
+        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+
+
+
         binding.tvLogin.setOnClickListener {
             var intent = Intent(applicationContext, ResLoginActivity::class.java)
             startActivity(intent)
@@ -123,6 +140,66 @@ class ResSignUpActivity : AppCompatActivity() {
                 }
             }
             false
+        }
+
+        binding.btnSignUp.setOnClickListener {
+            var resName = binding.etResName.text.toString().trim()
+            var resEmail = binding.etResEmail.text.toString().trim()
+            var resPass = binding.etResPass.text.toString().trim()
+            var resCPass = binding.etCResPass.text.toString().trim()
+
+            if (resName.isEmpty()||resEmail.isEmpty()||resPass.isEmpty()||resCPass.isEmpty()){
+                Toast.makeText(applicationContext,"ALl Fields Are Required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!resCPass.equals(resPass)){
+                Toast.makeText(applicationContext,"Password Do Not Match", Toast.LENGTH_SHORT).show()
+                binding.etResPass.error = "not matching"
+                binding.etCResPass.error = "Not matching"
+                return@setOnClickListener
+
+            }
+            var id = resEmail.replace(".","_")
+            var resModel = ResModel(id,resName,resEmail,resPass)
+            dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        Toast.makeText(applicationContext,"Email Already In Use", Toast.LENGTH_SHORT).show()
+                        return
+                    }else{
+                        dbResRef.child(id).setValue(resModel).addOnCompleteListener { task ->
+                            if (task.isSuccessful){
+                                Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
+                                var editor = sharedPreferences.edit()
+                                editor.putBoolean("isLoggedIn",true)
+                                editor.putString("resName",resModel.resName)
+                                editor.putString("resID",resModel.id)
+                                editor.putString("resEmail",resModel.resName)
+                                editor.putString("resImg",resModel.resName)
+                                editor.putString("uType","res")
+                                editor.apply()
+                                var intent = Intent(applicationContext, ResHomeActivity::class.java)
+                                startActivity(intent)
+                                finish()
+
+                            }else{
+                                Toast.makeText(applicationContext, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
+
+                }
+
+            })
+
+
+
+
+
         }
 
         binding.ivGoogle.setOnClickListener {

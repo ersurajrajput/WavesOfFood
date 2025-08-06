@@ -137,12 +137,14 @@
 
                     android:layout_height="wrap_content">
                     <Button
+                        android:id="@+id/btnBreakfast"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_white_rec"
                         android:text="Breakfast"
                         android:layout_weight="1"/>
                     <Button
+                        android:id="@+id/btnLunch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_white_rec"
@@ -150,6 +152,8 @@
                         android:text="Lunch"
                         android:layout_weight="1"/>
                     <Button
+                        android:id="@+id/btnDinner"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_white_rec"
@@ -172,15 +176,17 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/sen_regular"
                     android:textSize="20dp"/>
+
                 <EditText
+                    android:id="@+id/etFoodDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtFoodDesc"
-                    android:background="@drawable/bg_et2"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_et2"
+                    android:hint="Lorem ipsum dolor sit amet, consectetur adips cing elit. Bibendum in vel, mattis et amet dui mauris turpis."
                     android:minHeight="200dp"
-                    android:padding="20dp"
-                    android:hint="Lorem ipsum dolor sit amet, consectetur adips cing elit. Bibendum in vel, mattis et amet dui mauris turpis."/>
+                    android:padding="20dp" />
             </RelativeLayout>
             <Button
                 android:id="@+id/btnSave"
