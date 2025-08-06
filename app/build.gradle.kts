@@ -8,6 +8,7 @@ plugins {
 val localProperties = Properties().apply {
     load(File(rootProject.rootDir, "local.properties").inputStream())
 }
+val cloudinaryUrl: String = project.findProperty("cloudinary_url") as String? ?: ""
 
 
 android {
@@ -32,6 +33,31 @@ android {
             "String",
             "FIREBASE_DB_URL",
             "\"${localProperties["firebaseDbUrl"]}\""
+        )
+        buildConfigField(
+            "String",
+            "cloudinary_url",
+            "\"${localProperties["cloudinary_url"]}\""
+        )
+        defaultConfig {
+
+            // Inject from local.properties
+            manifestPlaceholders["cloudinary_url"] = cloudinaryUrl
+        }
+        buildConfigField(
+            "String",
+            "cloudinary_cloud_name",
+            "\"${localProperties["cloudinary_cloud_name"]}\""
+        )
+        buildConfigField(
+            "String",
+            "cloudinary_api_key",
+            "\"${localProperties["cloudinary_api_key"]}\""
+        )
+        buildConfigField(
+            "String",
+            "cloudinary_api_secret",
+            "\"${localProperties["cloudinary_api_secret"]}\""
         )
 
     }
@@ -62,6 +88,12 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.database)
+
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    //cloudinary
+    implementation("com.cloudinary:cloudinary-android:3.0.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -4,11 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
+import com.example.wavesoffood.Models.FoodItemModel
+import com.example.wavesoffood.Models.IngredientsModel
+import com.google.firebase.BuildConfig
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.database
 
 
 class SplashActivity : AppCompatActivity() {
@@ -22,11 +30,24 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
         var handler = Handler(Looper.getMainLooper())
+        FirebaseApp.initializeApp(applicationContext)
+//        var db = Firebase.database(com.example.wavesoffood.BuildConfig.FIREBASE_DB_URL)
+//        var dbTestRef = db.getReference("foodItem")
+//        var ingredientsModel = IngredientsModel("i1","name","img")
+//        var foodItemModel = FoodItemModel("f1","name","lunch",200,"sample","res1")
+//
+//        var kid = dbTestRef.push().key.toString()
+//        dbTestRef.child(kid).setValue(foodItemModel)
+
+       
+
+
+
         handler.postDelayed({
             var intent = Intent(applicationContext, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
-        },300)
+        },2000)
 
     }
 }

@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">WavesOfFood</string>
     <string name="WavesOfFood">Waves Of Food</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="SeeAllReviews"><u>See All Reviews</u></string>
+    <string name="SeeAll"><u>See All</u></string>
+
 
 </resources>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.res.AddNewFoodItemActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="600dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+
+            android:layout_marginEnd="20dp">
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/ibBack"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_back"
+                    android:background="@drawable/bg_white_circle"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/light_gray"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add New Food Items"
+                    android:layout_toEndOf="@id/ibBack"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/sen_bold"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="reset"
+                    android:textAllCaps="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/orange"/>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/txtFoodName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food Name"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/sen_regular"/>
+                <EditText
+                    android:id="@+id/etFoodName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtFoodName"
+                    android:background="@drawable/bg_et2"
+                    android:padding="20dp"
+                    android:hint="Pizaa"
+                    android:textColorHint="@color/hint"
+                    android:layout_marginTop="10dp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp">
+                <TextView
+                    android:id="@+id/txtUploadPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload photo"
+                    android:fontFamily="@font/sen_regular"
+                    android:textSize="20sp"/>
+                <ImageView
+                    android:id="@+id/ivFoodImgPreview"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/icon_upload_img"
+                    android:layout_marginTop="20sp"
+                    android:layout_below="@id/txtUploadPhoto"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:fontFamily="@font/sen_regular"
+                    android:textSize="20sp"/>
+                 <EditText
+                     android:id="@+id/etFoodPrice"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:padding="20dp"
+                     android:background="@drawable/bg_et2"
+                     android:layout_below="@id/txtPrice"
+                     android:layout_marginTop="20dp"
+                     android:hint="100"
+                     android:textColorHint="@color/hint"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/rl5">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtLable"
+                    android:text="Lable"
+                    android:fontFamily="@font/sen_regular"
+                    android:textSize="20sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/txtLable"
+                    android:layout_marginTop="20sp"
+
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_rec"
+                        android:text="Breakfast"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_rec"
+                        android:layout_marginStart="10dp"
+                        android:text="Lunch"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_rec"
+                        android:layout_marginStart="10dp"
+                        android:text="Dinner"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/rl6">
+                <TextView
+                    android:id="@+id/txtFoodDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About Your Food"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sen_regular"
+                    android:textSize="20dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtFoodDesc"
+                    android:background="@drawable/bg_et2"
+                    android:layout_marginTop="10dp"
+                    android:minHeight="200dp"
+                    android:padding="20dp"
+                    android:hint="Lorem ipsum dolor sit amet, consectetur adips cing elit. Bibendum in vel, mattis et amet dui mauris turpis."/>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="100dp"
+                android:padding="20dp"
+                android:background="@drawable/bg_orange_btn"
+                android:layout_marginTop="32dp" />
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
