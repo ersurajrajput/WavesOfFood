@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
     tools:context=".ui.res.ResHomeActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                android:id="@+id/rlMain"
-                android:layout_width="match_parent"
-                android:layout_marginTop="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_height="match_parent">
-                <include layout="@layout/fragment_res_home"/>
 
-            </RelativeLayout>
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <FrameLayout
+             android:layout_marginTop="52dp"
+             android:layout_marginStart="20dp"
+             android:layout_marginEnd="20dp"
+             android:id="@+id/fagmentContainer"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
 
-        </ScrollView>
+
+     </ScrollView>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,6 +37,6 @@
         android:background="@drawable/bg_white_bottom_layout"
         app:itemTextColor="@color/black"
         app:itemIconTint="@color/orange"/>
-    </RelativeLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </RelativeLayout>
+</RelativeLayout>

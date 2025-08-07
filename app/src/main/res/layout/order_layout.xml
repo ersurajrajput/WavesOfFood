@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_rec"
+        android:elevation="1dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFoodImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="20dp"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/ivFoodImgPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_sample"
+                android:scaleType="fitXY"/>
+        </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/cvFoodImg"
+            android:layout_marginStart="10dp">
+            <TextView
+                android:id="@+id/tvHash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#"
+                android:textColor="@color/orange"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/tvFoodLable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food Lable"
+                android:textColor="@color/orange"
+                android:textSize="10sp"
+                android:layout_toEndOf="@id/tvHash"/>
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FoodName"
+                android:fontFamily="@font/sen_bold"
+
+                android:textSize="20sp"
+                android:layout_below="@id/tvFoodLable"/>
+            <TextView
+                android:id="@+id/txtFoodID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+
+                android:textSize="15dp"
+                android:layout_below="@id/tvFoodName"/>
+            <TextView
+                android:id="@+id/tvOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="order id"
+
+                android:layout_marginStart="10dp"
+
+                android:textSize="15dp"
+                android:layout_toEndOf="@id/txtFoodID"
+                android:layout_below="@id/tvFoodName"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvOrderId"
+
+                android:orientation="vertical">
+
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1">
+                  <TextView
+                      android:id="@+id/txtRS"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="@font/sen_bold"
+                      android:textSize="20sp"
+                      android:text="RS."/>
+                  <TextView
+                      android:id="@+id/tvFoodPrice"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_toEndOf="@id/txtRS"
+                      android:layout_marginStart="10dp"
+                      android:fontFamily="@font/sen_bold"
+                      android:textSize="20sp"
+                      android:text="RS."/>
+              </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+                    <Button
+                        android:id="@+id/btnDone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:textSize="10sp"
+                        android:text="Done"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_orange_btn"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:textSize="10sp"
+                        android:background="@drawable/bg_orange_btn_hollo"
+                        android:text="Cancel"
+                        android:textColor="@color/orange"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

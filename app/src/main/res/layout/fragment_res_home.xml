@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RelativeLayout
+                    android:id="@+id/rlRunningOrders"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_white_rec"
@@ -89,13 +90,23 @@
                     android:layout_marginRight="10dp"
                     android:elevation="1dp"
                     android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tvNoOfRunningOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="50sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
-                        android:textSize="50sp"/>
+                        android:text="Running Orders"
+                        android:layout_below="@id/tvNoOfRunningOrders"
+                        android:layout_marginTop="20dp"/>
                 </RelativeLayout>
                 <RelativeLayout
+                    android:id="@+id/rlReqOrders"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_white_rec"
@@ -104,10 +115,18 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tvTotalNoOfReqOrders"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
+                        android:text="0"
                         android:textSize="50sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Order Request"
+                        android:layout_below="@id/tvTotalNoOfReqOrders"
+                        android:layout_marginTop="20dp"/>
+
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

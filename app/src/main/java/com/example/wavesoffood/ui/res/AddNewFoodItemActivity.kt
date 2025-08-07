@@ -5,7 +5,9 @@ import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -111,6 +113,11 @@ class AddNewFoodItemActivity : AppCompatActivity() {
             val file = uriToFile(imageUri)
             MediaManager.get().upload(file.path).option("upload_preset","wavesoffood_preset").callback(object : UploadCallback{
                 override fun onStart(requestId: String?) {
+                    binding.sv.visibility = View.GONE
+                    binding.successLayout.visibility = View.VISIBLE
+                    binding.successLayout.findViewById<LinearLayout>(R.id.ll1).visibility = View.GONE
+                    binding.successLayout.findViewById<LinearLayout>(R.id.ll2).visibility = View.VISIBLE
+
                     Toast.makeText(applicationContext, "started", Toast.LENGTH_SHORT).show()
 
                 }
@@ -134,7 +141,7 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                     var foodItemModel = FoodItemModel(foodId,foodName,foodCat,foodPrice.toIntOrNull(),url,resID)
 //                   var myFoodItemRef = dbFoodItemRef.setValue(foodId)
                     dbFoodItemRef.child(foodId.toString()).setValue(foodItemModel).addOnSuccessListener {
-                        onBackPressedDispatcher.onBackPressed()
+
                         Toast.makeText(applicationContext, "Item saved successfully!", Toast.LENGTH_SHORT).show()
                     }
                         .addOnFailureListener { exception ->
@@ -151,6 +158,9 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                         }
 
 
+
+                    binding.successLayout.findViewById<LinearLayout>(R.id.ll2).visibility = View.GONE
+                    binding.successLayout.findViewById<LinearLayout>(R.id.ll1).visibility = View.VISIBLE
 
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
 
@@ -173,6 +183,11 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                 }
 
             }).dispatch()
+
+        }
+        binding.successLayout.findViewById<Button>(R.id.btnOk).setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+            Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
 
         }
 

@@ -7,5 +7,6 @@ data class FoodItemModel(
     var foodPrice : Int ? = null,
     var foodImg : String ? = null,
     var resId : String ? = null,
+    var foodRating:Int? = null,
 
 )

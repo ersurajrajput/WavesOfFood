@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+<LinearLayout
+    android:id="@+id/ll1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:visibility="gone"
+    android:background="@drawable/img_starbg"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/ivDones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/icon_done"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+
+        android:fontFamily="@font/sen_regular"
+        android:textColor="@color/orange"
+        android:textSize="32sp"
+        android:text="Successful" />
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32sp"
+        android:layout_marginEnd="32sp"
+        android:padding="20dp"
+        android:background="@drawable/bg_orange_btn"
+        android:text="Ok"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sen_bold"/>
+
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/prograressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/icon_done"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_centerHorizontal="true"
+
+            android:fontFamily="@font/sen_regular"
+            android:textColor="@color/orange"
+            android:textSize="32sp"
+            android:text="Please Wait" />
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32sp"
+            android:layout_marginEnd="32sp"
+            android:padding="20dp"
+            android:background="@drawable/bg_orange_btn"
+            android:text="Upliading Your data"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sen_bold"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

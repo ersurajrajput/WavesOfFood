@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityResHomeBinding
 import com.example.wavesoffood.databinding.ActivityResSignUpBinding
+import com.example.wavesoffood.ui.res.Fragments.ResHomeFragment
 
 class ResHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResHomeBinding
@@ -22,6 +23,12 @@ class ResHomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        supportFragmentManager.beginTransaction().replace(binding.fagmentContainer.id, ResHomeFragment()).commit()
+
+
+
+
+
         binding.resBottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId){
                 R.id.menu_home -> {
@@ -42,12 +49,14 @@ class ResHomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_user -> {
-                    // Handle profile click
+                    var intent = Intent(applicationContext, ResProfileActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false
             }
         }
+
 
     }
 }

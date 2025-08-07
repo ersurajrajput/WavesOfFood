@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.wavesoffood.Helpers.LoginChakerHelper
+import com.example.wavesoffood.Helpers.SharedPrefHelper
 import com.example.wavesoffood.Models.ResModel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityResLoginBinding
@@ -39,7 +41,13 @@ class ResLoginActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         var db = Firebase.database(com.example.wavesoffood.BuildConfig.FIREBASE_DB_URL)
         var dbResRef = db.getReference("res")
-        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+        //login checker
+        var loginChakerHelper = LoginChakerHelper(applicationContext)
+        if (loginChakerHelper.isLoggedIn()){
+            loginChakerHelper.loginRouteHelper()
+        }
+
 
         binding.btnLogin.setOnClickListener {
             var email = binding.etResEmail.text.toString().trim()
@@ -54,17 +62,8 @@ class ResLoginActivity : AppCompatActivity() {
                     if (snapshot.exists()){
                        var resModel = snapshot.getValue(ResModel::class.java)
                         if (resModel!=null && resModel.resPass.equals(pass)){
-                                //login pased
-                            var editor = sharedPreferences.edit()
-                            editor.putBoolean("isLoggedIn",true)
-                            editor.putString("resName",resModel.resName)
-                            editor.putString("resID",resModel.id)
-                            editor.putString("resEmail",resModel.resName)
-                            editor.putString("resImg",resModel.resName)
-                            editor.putString("uType","res")
-                            editor.apply()
-                            var intent = Intent(applicationContext, ResHomeActivity::class.java)
-                            startActivity(intent)
+                            var sharedPrefHelper = SharedPrefHelper(applicationContext)
+                            sharedPrefHelper.saveRes(resModel)
                             finish()
                         }else{
                             Toast.makeText(applicationContext,"Wrong Password", Toast.LENGTH_SHORT).show()

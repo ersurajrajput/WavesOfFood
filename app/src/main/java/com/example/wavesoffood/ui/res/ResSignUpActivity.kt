@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.BuildConfig
+import com.example.wavesoffood.Helpers.LoginChakerHelper
+import com.example.wavesoffood.Helpers.SharedPrefHelper
 import com.example.wavesoffood.Models.ResModel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityResLoginBinding
@@ -40,7 +42,13 @@ class ResSignUpActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         var db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
         var dbResRef = db.getReference("res")
-        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+        //login checker
+        var loginChakerHelper = LoginChakerHelper(applicationContext)
+        if (loginChakerHelper.isLoggedIn()){
+            loginChakerHelper.loginRouteHelper()
+        }
+
 
 
 
@@ -49,20 +57,6 @@ class ResSignUpActivity : AppCompatActivity() {
             var intent = Intent(applicationContext, ResLoginActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         var isPassVisible = false // Track password visibility
         binding.etResPass.setOnTouchListener { v, event ->
@@ -160,7 +154,7 @@ class ResSignUpActivity : AppCompatActivity() {
 
             }
             var id = resEmail.replace(".","_")
-            var resModel = ResModel(id,resName,resEmail,resPass)
+            var resModel = ResModel(id,resName,resEmail,resPass,null,null,0,0,0)
             dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
@@ -170,16 +164,8 @@ class ResSignUpActivity : AppCompatActivity() {
                         dbResRef.child(id).setValue(resModel).addOnCompleteListener { task ->
                             if (task.isSuccessful){
                                 Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
-                                var editor = sharedPreferences.edit()
-                                editor.putBoolean("isLoggedIn",true)
-                                editor.putString("resName",resModel.resName)
-                                editor.putString("resID",resModel.id)
-                                editor.putString("resEmail",resModel.resName)
-                                editor.putString("resImg",resModel.resName)
-                                editor.putString("uType","res")
-                                editor.apply()
-                                var intent = Intent(applicationContext, ResHomeActivity::class.java)
-                                startActivity(intent)
+                                var sharedPrefHelper = SharedPrefHelper(applicationContext)
+                                sharedPrefHelper.saveRes(resModel)
                                 finish()
 
                             }else{

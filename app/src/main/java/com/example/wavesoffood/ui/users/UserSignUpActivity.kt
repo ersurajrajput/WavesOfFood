@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.BuildConfig
+import com.example.wavesoffood.Helpers.LoginChakerHelper
+import com.example.wavesoffood.Helpers.SharedPrefHelper
 import com.example.wavesoffood.Models.Usermodel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityUserLoginBinding
@@ -22,6 +24,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import kotlin.math.log
 
 class UserSignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserSignUpBinding
@@ -39,7 +42,14 @@ class UserSignUpActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         var db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
         var dbUsersRef = db.getReference("users")
-        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+
+        //login checker
+        var loginChakerHelper = LoginChakerHelper(applicationContext)
+        if (loginChakerHelper.isLoggedIn()){
+            loginChakerHelper.loginRouteHelper()
+        }
+
 
         var isPassVisible = false // Track password visibility
         binding.etUserPass.setOnTouchListener { v, event ->
@@ -160,17 +170,9 @@ class UserSignUpActivity : AppCompatActivity() {
                     }else{
                         myUserRef.setValue(userModel).addOnCompleteListener { task ->
                             if (task.isSuccessful){
-                                var editor = sharedPreferences.edit()
-                                editor.putBoolean("isLoggedIn",true)
-                                editor.putString("userName",userModel.userName)
-                                editor.putString("userID",userModel.id)
-                                editor.putString("userEmail",userModel.userEmail)
-                                editor.putString("userImg",userModel.userImg)
-                                editor.putString("uType","user")
-                                editor.apply()
+                                var sharedPrefHelper = SharedPrefHelper(applicationContext)
+                                sharedPrefHelper.saveUser(userModel)
                                 Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
-                                var intent = Intent(applicationContext, UserHomeActivity::class.java)
-                                startActivity(intent)
                                 finish()
 
                             }else{

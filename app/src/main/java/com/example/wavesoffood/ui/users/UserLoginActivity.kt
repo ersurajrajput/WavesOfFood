@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wavesoffood.BuildConfig
+import com.example.wavesoffood.Helpers.LoginChakerHelper
+import com.example.wavesoffood.Helpers.SharedPrefHelper
 import com.example.wavesoffood.Models.Usermodel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.ActivityOnBoardingBinding
@@ -40,7 +42,12 @@ class UserLoginActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         var db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
         var dbUsersRef = db.getReference("users")
-        val sharedPreferences = getSharedPreferences("wavesoffood", MODE_PRIVATE)
+
+        //login checker
+        var loginChakerHelper = LoginChakerHelper(applicationContext)
+        if (loginChakerHelper.isLoggedIn()){
+            loginChakerHelper.loginRouteHelper()
+        }
 
 
 
@@ -101,17 +108,9 @@ class UserLoginActivity : AppCompatActivity() {
                   var userModel = snapshot.getValue(Usermodel::class.java)
                    if (snapshot.exists()){
                        if (userModel?.userPass.equals(userPass) && userModel!=null){
-                           var editor = sharedPreferences.edit()
-                           editor.putBoolean("isLoggedIn",true)
-                           editor.putString("userName",userModel.userName)
-                           editor.putString("userID",userModel.id)
-                           editor.putString("userEmail",userModel.userEmail)
-                           editor.putString("userImg",userModel.userImg)
-                           editor.putString("uType","user")
-                           editor.apply()
+                          var sharedPrefHelper = SharedPrefHelper(applicationContext)
+                           sharedPrefHelper.saveUser(userModel)
                            Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
-                           var intent = Intent(applicationContext, UserHomeActivity::class.java)
-                           startActivity(intent)
                            finish()
                        }else{
                            Toast.makeText(applicationContext,"Wrong Password", Toast.LENGTH_SHORT).show()

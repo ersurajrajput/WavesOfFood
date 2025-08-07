@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--     for android 12 -  -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- for android 12 - -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,13 +17,14 @@
         android:theme="@style/Theme.WavesOfFood"
         tools:ignore="SelectedPhotoAccess">
         <activity
+            android:name=".ui.res.ResProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.res.AddNewFoodItemActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.res.ResHomeActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.users.UserHomeActivity"
             android:exported="false" />
@@ -50,7 +52,10 @@
         <activity
             android:name=".ui.users.UserLoginActivity"
             android:exported="false" />
-        <meta-data android:name="CLOUDINARY_URL" android:value="${cloudinary_url}"/>
+
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="${cloudinary_url}" />
     </application>
 
 </manifest>
