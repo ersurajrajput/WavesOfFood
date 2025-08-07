@@ -44,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
 ////        var ingredientsModel = IngredientsModel("i1","name","img")
 //        for (i in 1..20){
 //            var id = dbTestRef.push().key.toString()
-//            var orderModel = OrderModel(id,"admin@gmail_com","admin@gmail_com","-OX2A0o_C_GLaqXyCbIS","running")
+//            var orderModel = OrderModel(id,"admin@gmail_com","admin@gmail_com","-OX2A0o_C_GLaqXyCbIS","req")
 //            dbTestRef.child(id).setValue(orderModel)
 //
 //        }

@@ -84,6 +84,7 @@
                                 android:textColor="@color/white"
                                 android:fontFamily="@font/sen_bold"/>
                             <TextView
+                                android:id="@+id/tvBal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAllCaps="true"

@@ -9,7 +9,8 @@ data class ResModel(
     var resImg : String? = null,
     var resTotalRunningOrders: Int?=null,
     var resTotalReqOrders: Int?=null,
-    var resTotalOrders: Int?=null
+    var resTotalOrders: Int?=null,
+    var bal: Int?=null
 
 
 )

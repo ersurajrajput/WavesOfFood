@@ -100,9 +100,14 @@ class ReqOrdersAdepter(var context: Context,var orderList: List<OrderModel>): Re
         //click listners
         holder.btnDone.setOnClickListener {
             var id = holder.tvOrderId.text.toString()
-            resTotalOrders = resTotalOrders!! + 1
-            resTotalRunningOrders = resTotalRunningOrders!! + 1
-            resTotalReqOrders = resTotalReqOrders!! - 1
+
+            if (resTotalReqOrders!! >0){
+                resTotalOrders = resTotalOrders!! + 1
+                resTotalRunningOrders = resTotalRunningOrders!! + 1
+                resTotalReqOrders = resTotalReqOrders!! - 1
+
+            }
+
 
             dbResRef.child(resId).child("resTotalOrders").setValue(resTotalOrders)
             dbResRef.child(resId).child("resTotalRunningOrders").setValue(resTotalRunningOrders)
@@ -112,8 +117,14 @@ class ReqOrdersAdepter(var context: Context,var orderList: List<OrderModel>): Re
         }
         holder.btnCancel.setOnClickListener {
             var id = holder.tvOrderId.text.toString()
-            resTotalOrders = resTotalOrders!! + 1
-            resTotalReqOrders = resTotalReqOrders!! - 1
+
+            resTotalReqOrders?.let {
+                if (it >0){
+                    resTotalOrders = resTotalOrders!! + 1
+                    resTotalReqOrders = resTotalReqOrders!! - 1
+                }
+            }
+
             dbResRef.child(resId).child("resTotalOrders").setValue(resTotalOrders)
             dbResRef.child(resId).child("resTotalReqOrders").setValue(resTotalReqOrders)
             dbOrderRef.child(id).child("orderStatus").setValue("cancel")
