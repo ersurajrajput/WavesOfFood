@@ -32,6 +32,7 @@ class OnBoardingActivity : AppCompatActivity() {
         binding.btnRes.setOnClickListener {
             var intent = Intent(applicationContext, ResLoginActivity::class.java)
             startActivity(intent)
-            finish() }
+            finish()
+        }
     }
 }

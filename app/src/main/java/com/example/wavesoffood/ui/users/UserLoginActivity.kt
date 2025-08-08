@@ -27,6 +27,7 @@ import com.google.firebase.database.database
 
 class UserLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserLoginBinding
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,12 +46,9 @@ class UserLoginActivity : AppCompatActivity() {
 
         //login checker
         var loginChakerHelper = LoginChakerHelper(applicationContext)
-        if (loginChakerHelper.isLoggedIn()){
+        if (loginChakerHelper.isLoggedIn()) {
             loginChakerHelper.loginRouteHelper()
         }
-
-
-
 
 
         var isPassVisible = false // Track password visibility
@@ -71,18 +69,26 @@ class UserLoginActivity : AppCompatActivity() {
 
                         // Change input type
                         if (isPassVisible) {
-                            binding.etUserPass.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                            binding.etUserPass.inputType =
+                                InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                         } else {
-                            binding.etUserPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                            binding.etUserPass.inputType =
+                                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                         }
 
                         // Move cursor to end
                         binding.etUserPass.setSelection(binding.etUserPass.text.length)
 
                         // Change drawable icon
-                        val drawableId = if (isPassVisible) R.drawable.icon_eye else R.drawable.icon_eye_off
+                        val drawableId =
+                            if (isPassVisible) R.drawable.icon_eye else R.drawable.icon_eye_off
                         val newDrawable = ContextCompat.getDrawable(this, drawableId)
-                        binding.etUserPass.setCompoundDrawablesRelativeWithIntrinsicBounds(  drawableStart , null, newDrawable, null)
+                        binding.etUserPass.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            drawableStart,
+                            null,
+                            newDrawable,
+                            null
+                        )
 
                         v.performClick() // For accessibility
                         return@setOnTouchListener true
@@ -98,32 +104,34 @@ class UserLoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             var useEmail = binding.etUserEmail.text.toString().trim()
             var userPass = binding.etUserPass.text.toString().trim()
-            if (userPass.isEmpty()||useEmail.isEmpty()){
-                Toast.makeText(applicationContext,"All Fields Are Required", Toast.LENGTH_SHORT).show()
+            if (userPass.isEmpty() || useEmail.isEmpty()) {
+                Toast.makeText(applicationContext, "All Fields Are Required", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
-            var id = useEmail.replace(".","_")
-            dbUsersRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener{
+            var id = useEmail.replace(".", "_")
+            dbUsersRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                  var userModel = snapshot.getValue(Usermodel::class.java)
-                   if (snapshot.exists()){
-                       if (userModel?.userPass.equals(userPass) && userModel!=null){
-                          var sharedPrefHelper = SharedPrefHelper(applicationContext)
-                           sharedPrefHelper.saveUser(userModel)
-                           Toast.makeText(applicationContext,"Saved", Toast.LENGTH_SHORT).show()
-                           finish()
-                       }else{
-                           Toast.makeText(applicationContext,"Wrong Password", Toast.LENGTH_SHORT).show()
+                    var userModel = snapshot.getValue(Usermodel::class.java)
+                    if (snapshot.exists()) {
+                        if (userModel?.userPass.equals(userPass) && userModel != null) {
+                            var sharedPrefHelper = SharedPrefHelper(applicationContext)
+                            sharedPrefHelper.saveUser(userModel)
+                            Toast.makeText(applicationContext, "Saved", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            Toast.makeText(applicationContext, "Wrong Password", Toast.LENGTH_SHORT)
+                                .show()
 
-                       }
-                   }else{
-                       Toast.makeText(applicationContext,"Wrong Email", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(applicationContext, "Wrong Email", Toast.LENGTH_SHORT).show()
 
-                   }
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(applicationContext,error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -134,13 +142,13 @@ class UserLoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.ivGoogle.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
         binding.ivFacebook.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
         binding.ivTwitter.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
     }
 }

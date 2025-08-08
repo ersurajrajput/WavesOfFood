@@ -65,6 +65,7 @@ class ResHomeFragment : Fragment() {
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Firebase.initialize(requireContext())
@@ -79,16 +80,16 @@ class ResHomeFragment : Fragment() {
         var resId = sharedPrefHelper.getResId()
 
 
-        dbResRef.child(resId).addValueEventListener(object : ValueEventListener{
+        dbResRef.child(resId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-               if (snapshot.exists()){
-                   var resModel = snapshot.getValue(ResModel::class.java)
-                   tvMainTotalNoOfRunningOrders.text = resModel?.resTotalRunningOrders.toString()
-                   tvMainTotalNoOfReqOrders.text = resModel?.resTotalReqOrders.toString()
+                if (snapshot.exists()) {
+                    var resModel = snapshot.getValue(ResModel::class.java)
+                    tvMainTotalNoOfRunningOrders.text = resModel?.resTotalRunningOrders.toString()
+                    tvMainTotalNoOfReqOrders.text = resModel?.resTotalReqOrders.toString()
 
-               }else{
-                   Toast.makeText(requireContext(),"No Orders", Toast.LENGTH_SHORT).show()
-               }
+                } else {
+                    Toast.makeText(requireContext(), "No Orders", Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -96,19 +97,6 @@ class ResHomeFragment : Fragment() {
             }
 
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // Drawer Logic
@@ -119,12 +107,6 @@ class ResHomeFragment : Fragment() {
         }
 
 
-
-
-
-
-
-
         //running order logic
         binding.rlRunningOrders.setOnClickListener {
             var bottomSheetDialog = BottomSheetDialog(requireContext())
@@ -132,15 +114,16 @@ class ResHomeFragment : Fragment() {
             bottomSheetDialog.setContentView(runningOrders)
             bottomSheetDialog.show()
 
-            var rvRuningOrders = runningOrders.findViewById<RecyclerView>(R.id.runningOrdersRecyclerView)
+            var rvRuningOrders =
+                runningOrders.findViewById<RecyclerView>(R.id.runningOrdersRecyclerView)
             rvRuningOrders.layoutManager = LinearLayoutManager(requireContext())
-            var totalRunningOrders : String? = null
+            var totalRunningOrders: String? = null
             val orderList = ArrayList<OrderModel>()
-            val runningadapter = RunningOrdersAdepter(requireContext(),orderList)
+            val runningadapter = RunningOrdersAdepter(requireContext(), orderList)
             rvRuningOrders.adapter = runningadapter
             queryRunningOrders.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
+                    if (snapshot.exists()) {
                         orderList.clear()
                         for (orderSnap in snapshot.children) {
                             val order = orderSnap.getValue(OrderModel::class.java)
@@ -149,7 +132,8 @@ class ResHomeFragment : Fragment() {
                         runningadapter.notifyDataSetChanged()
                         totalRunningOrders = orderList.size.toString()
 
-                        bottomSheetDialog.findViewById<TextView>(R.id.tvTotalNoOfRunningOrders)?.text = totalRunningOrders
+                        bottomSheetDialog.findViewById<TextView>(R.id.tvTotalNoOfRunningOrders)?.text =
+                            totalRunningOrders
                     }
                     if (!snapshot.exists()) {
                         Toast.makeText(requireContext(), "No orders", Toast.LENGTH_SHORT).show()
@@ -164,7 +148,7 @@ class ResHomeFragment : Fragment() {
 
 
             var btnDismiss = runningOrders.findViewById<Button>(R.id.btnDismiss)
-            btnDismiss.setOnClickListener{
+            btnDismiss.setOnClickListener {
                 bottomSheetDialog.hide()
             }
         }
@@ -179,13 +163,13 @@ class ResHomeFragment : Fragment() {
 
             var rvReqOrders = reqOrders.findViewById<RecyclerView>(R.id.reqOrdersRecyclerView)
             rvReqOrders.layoutManager = LinearLayoutManager(requireContext())
-            var totalReqOrders : String? = null
+            var totalReqOrders: String? = null
             val orderList = ArrayList<OrderModel>()
-            val runningadapter = ReqOrdersAdepter(requireContext(),orderList)
+            val runningadapter = ReqOrdersAdepter(requireContext(), orderList)
             rvReqOrders.adapter = runningadapter
             queryReqOrders.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
+                    if (snapshot.exists()) {
                         orderList.clear()
                         for (orderSnap in snapshot.children) {
                             val order = orderSnap.getValue(OrderModel::class.java)
@@ -194,7 +178,9 @@ class ResHomeFragment : Fragment() {
                         runningadapter.notifyDataSetChanged()
                         totalReqOrders = orderList.size.toString()
 
-                        bottomSheetDialog.findViewById<TextView>(R.id.tvTotalNoOfRunningOrders)?.text = totalReqOrders                    }
+                        bottomSheetDialog.findViewById<TextView>(R.id.tvTotalNoOfRunningOrders)?.text =
+                            totalReqOrders
+                    }
                     if (!snapshot.exists()) {
                         Toast.makeText(requireContext(), "No orders", Toast.LENGTH_SHORT).show()
                     }
@@ -208,7 +194,7 @@ class ResHomeFragment : Fragment() {
 
 
             var btnDismiss = reqOrders.findViewById<Button>(R.id.btnDismiss)
-            btnDismiss.setOnClickListener{
+            btnDismiss.setOnClickListener {
                 bottomSheetDialog.hide()
             }
 

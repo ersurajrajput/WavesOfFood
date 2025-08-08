@@ -45,21 +45,22 @@ class ResProfileActivity : AppCompatActivity() {
 
 
 
-        dbResRef.child(sharedPrefHelper.getResId()).addValueEventListener(object  : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
+        dbResRef.child(sharedPrefHelper.getResId())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
 
-                    var resModel = snapshot.getValue(ResModel::class.java)
-                    binding.tvTotalNoOfOrders.text=  resModel?.resTotalOrders.toString()
-                    binding.tvBal.text = resModel?.bal.toString()
+                        var resModel = snapshot.getValue(ResModel::class.java)
+                        binding.tvTotalNoOfOrders.text = resModel?.resTotalOrders.toString()
+                        binding.tvBal.text = resModel?.bal.toString()
+                    }
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
 
-        })
+            })
 
 
 
@@ -68,31 +69,30 @@ class ResProfileActivity : AppCompatActivity() {
 
 
         binding.lrPersonalInfo.setOnClickListener {
-            Toast.makeText(applicationContext,"coming soon", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "coming soon", Toast.LENGTH_SHORT).show()
 
         }
         binding.rlSettings.setOnClickListener {
-            Toast.makeText(applicationContext,"coming soon", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "coming soon", Toast.LENGTH_SHORT).show()
 
         }
         binding.rlWithdrawalHistory.setOnClickListener {
-            Toast.makeText(applicationContext,"coming soon", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "coming soon", Toast.LENGTH_SHORT).show()
 
         }
         binding.rlNoOfOrders.setOnClickListener {
-            Toast.makeText(applicationContext,"coming soon", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "coming soon", Toast.LENGTH_SHORT).show()
 
         }
         binding.rlUserReviews.setOnClickListener {
-            Toast.makeText(applicationContext,"coming soon", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "coming soon", Toast.LENGTH_SHORT).show()
 
         }
         binding.rlLogOut.setOnClickListener {
             var sharedPrefHelper = SharedPrefHelper(applicationContext)
             sharedPrefHelper.delete()
-            Toast.makeText(applicationContext,"Logged Out", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
         }
-
 
 
     }

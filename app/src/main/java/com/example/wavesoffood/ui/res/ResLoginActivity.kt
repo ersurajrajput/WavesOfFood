@@ -27,6 +27,7 @@ import com.google.firebase.database.database
 
 class ResLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResLoginBinding
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class ResLoginActivity : AppCompatActivity() {
 
         //login checker
         var loginChakerHelper = LoginChakerHelper(applicationContext)
-        if (loginChakerHelper.isLoggedIn()){
+        if (loginChakerHelper.isLoggedIn()) {
             loginChakerHelper.loginRouteHelper()
         }
 
@@ -52,30 +53,32 @@ class ResLoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             var email = binding.etResEmail.text.toString().trim()
             var pass = binding.etResPass.text.toString().trim()
-            if (email.isEmpty()||pass.isEmpty()){
-                Toast.makeText(applicationContext,"All Field Are Required", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(applicationContext, "All Field Are Required", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
-            var id = email.replace(".","_")
-            dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener{
+            var id = email.replace(".", "_")
+            dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
-                       var resModel = snapshot.getValue(ResModel::class.java)
-                        if (resModel!=null && resModel.resPass.equals(pass)){
+                    if (snapshot.exists()) {
+                        var resModel = snapshot.getValue(ResModel::class.java)
+                        if (resModel != null && resModel.resPass.equals(pass)) {
                             var sharedPrefHelper = SharedPrefHelper(applicationContext)
                             sharedPrefHelper.saveRes(resModel)
                             finish()
-                        }else{
-                            Toast.makeText(applicationContext,"Wrong Password", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(applicationContext, "Wrong Password", Toast.LENGTH_SHORT)
+                                .show()
 
                         }
-                    }else{
-                        Toast.makeText(applicationContext,"Wrong Email", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext, "Wrong Email", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(applicationContext,error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, error.message, Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -86,22 +89,6 @@ class ResLoginActivity : AppCompatActivity() {
             var intent = Intent(applicationContext, ResSignUpActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         var isPassVisible = false // Track password visibility
@@ -122,18 +109,26 @@ class ResLoginActivity : AppCompatActivity() {
 
                         // Change input type
                         if (isPassVisible) {
-                            binding.etResPass.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                            binding.etResPass.inputType =
+                                InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                         } else {
-                            binding.etResPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                            binding.etResPass.inputType =
+                                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                         }
 
                         // Move cursor to end
                         binding.etResPass.setSelection(binding.etResPass.text.length)
 
                         // Change drawable icon
-                        val drawableId = if (isPassVisible) R.drawable.icon_eye else R.drawable.icon_eye_off
+                        val drawableId =
+                            if (isPassVisible) R.drawable.icon_eye else R.drawable.icon_eye_off
                         val newDrawable = ContextCompat.getDrawable(this, drawableId)
-                        binding.etResPass.setCompoundDrawablesRelativeWithIntrinsicBounds(  drawableStart , null, newDrawable, null)
+                        binding.etResPass.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            drawableStart,
+                            null,
+                            newDrawable,
+                            null
+                        )
 
                         v.performClick() // For accessibility
                         return@setOnTouchListener true
@@ -143,13 +138,13 @@ class ResLoginActivity : AppCompatActivity() {
             false
         }
         binding.ivGoogle.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
         binding.ivFacebook.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
         binding.ivTwitter.setOnClickListener {
-            Toast.makeText(applicationContext,"Comming Soong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Comming Soong", Toast.LENGTH_SHORT).show()
         }
     }
 }

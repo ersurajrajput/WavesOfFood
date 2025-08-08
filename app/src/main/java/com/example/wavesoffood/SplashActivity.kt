@@ -53,13 +53,11 @@ class SplashActivity : AppCompatActivity() {
 //
 
 
-
-
         handler.postDelayed({
-           var loginChakerHelper = LoginChakerHelper(applicationContext)
-           loginChakerHelper.loginRouteHelper()
+            var loginChakerHelper = LoginChakerHelper(applicationContext)
+            loginChakerHelper.loginRouteHelper()
 
-        },2000)
+        }, 2000)
 
     }
 }
