@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvimg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:cardCornerRadius="35dp">
+        <ImageView
+            android:id="@+id/userImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_sample"
+            android:scaleType="fitXY"/>
+    </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_rec"
+        android:layout_toEndOf="@id/cvimg"
+        android:layout_marginStart="10dp"
+        android:padding="20dp"
+        android:backgroundTint="@color/light_white">
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01/01/2001"
+            android:textSize="15sp"
+            android:fontFamily="@font/sen_regular"
+            android:textColor="@color/light_gray"/>
+        <TextView
+            android:id="@+id/tvTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            android:text="Tittle"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/sen_bold"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTittle"
+            android:src="@drawable/five_star_rating"
+            android:layout_marginTop="5dp"
+            android:id="@+id/ivRating"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This Food so tasty and  delicious. Breakfast
+so fast Delivered in my place. Chef is very
+friendly. I’m really like chef for Home Food
+Order. Thanks. "
+            android:layout_below="@id/ivRating"
+            android:id="@+id/desc"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

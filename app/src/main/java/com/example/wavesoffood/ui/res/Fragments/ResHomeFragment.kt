@@ -20,6 +20,7 @@ import com.example.wavesoffood.Models.OrderModel
 import com.example.wavesoffood.Models.ResModel
 import com.example.wavesoffood.R
 import com.example.wavesoffood.databinding.FragmentResHomeBinding
+import com.example.wavesoffood.ui.res.ResAllReviewsActivity
 import com.example.wavesoffood.ui.res.ResHomeActivity
 import com.example.wavesoffood.ui.res.ResProfileActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -80,13 +81,21 @@ class ResHomeFragment : Fragment() {
         var resId = sharedPrefHelper.getResId()
 
 
+        //init
+
+
         dbResRef.child(resId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     var resModel = snapshot.getValue(ResModel::class.java)
                     tvMainTotalNoOfRunningOrders.text = resModel?.resTotalRunningOrders.toString()
                     tvMainTotalNoOfReqOrders.text = resModel?.resTotalReqOrders.toString()
+                    binding.tvResRating.text = resModel?.resRating.toString()
+                    binding.tvTotalResReview.text = resModel?.resTotalReview.toString()
+                    if (resModel?.resAdd != null){
+                        binding.tvResAddress.text = resModel?.resAdd
 
+                    }
                 } else {
                     Toast.makeText(requireContext(), "No Orders", Toast.LENGTH_SHORT).show()
                 }
@@ -98,6 +107,10 @@ class ResHomeFragment : Fragment() {
 
         })
 
+        binding.tvSeeAllReviews.setOnClickListener {
+            var intent = Intent(requireContext(), ResAllReviewsActivity::class.java)
+            startActivity(intent)
+        }
 
         // Drawer Logic
         binding.ibDrawer.setOnClickListener {

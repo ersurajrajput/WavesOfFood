@@ -3,9 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF7622</color>
+    <color name="light_orange">#33FF7622</color>
     <color name="light_dark">#1E1E2E</color>
     <color name="et_color">#F0F5FA</color>
     <color name="hint">#A0A5BA</color>
     <color name="light_gray">#98A8B8</color>
     <color name="light_white">#F6F6F6</color>
+    <color name="back_btn_bg_color">#ECF0F4</color>
 </resources>

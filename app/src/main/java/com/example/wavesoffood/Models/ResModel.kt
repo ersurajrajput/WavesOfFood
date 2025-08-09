@@ -10,7 +10,9 @@ data class ResModel(
     var resTotalRunningOrders: Int?=null,
     var resTotalReqOrders: Int?=null,
     var resTotalOrders: Int?=null,
-    var bal: Int?=null
+    var bal: Int?=null,
+    var resRating : Double? = null,
+    var resTotalReview : Int ? = null,
 
 
 )

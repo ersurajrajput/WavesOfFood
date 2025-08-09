@@ -9,6 +9,8 @@ val localProperties = Properties().apply {
     load(File(rootProject.rootDir, "local.properties").inputStream())
 }
 val cloudinaryUrl: String = project.findProperty("cloudinary_url") as String? ?: ""
+val google_map_api_key: String = project.findProperty("google_map_api_key") as String? ?: ""
+
 
 
 android {
@@ -43,6 +45,11 @@ android {
 
             // Inject from local.properties
             manifestPlaceholders["cloudinary_url"] = cloudinaryUrl
+        }
+        defaultConfig {
+
+            // Inject from local.properties
+            manifestPlaceholders["google_map_api_key"] = google_map_api_key
         }
         buildConfigField(
             "String",
@@ -94,6 +101,12 @@ dependencies {
 
     //cloudinary
     implementation("com.cloudinary:cloudinary-android:3.0.2")
+
+    //location
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    //maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

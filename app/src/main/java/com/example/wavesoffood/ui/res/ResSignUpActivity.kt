@@ -173,7 +173,7 @@ class ResSignUpActivity : AppCompatActivity() {
 
             }
             var id = resEmail.replace(".", "_")
-            var resModel = ResModel(id, resName, resEmail, resPass, null, null, 0, 0, 0, 0)
+            var resModel = ResModel(id, resName, resEmail, resPass, null, null, 0, 0, 0, 0,0.0,0)
             dbResRef.child(id).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {

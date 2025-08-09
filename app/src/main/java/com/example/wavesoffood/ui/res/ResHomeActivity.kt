@@ -35,6 +35,8 @@ class ResHomeActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu_home -> {
                     // Handle home click
+                    supportFragmentManager.beginTransaction()
+                        .replace(binding.fagmentContainer.id, ResHomeFragment()).commit()
                     true
                 }
 
@@ -48,7 +50,7 @@ class ResHomeActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_add -> {
-                    var intent = Intent(applicationContext, AddNewFoodItemActivity::class.java)
+                    var intent = Intent(this, AddNewFoodItemActivity::class.java)
                     startActivity(intent)
                     true
                 }

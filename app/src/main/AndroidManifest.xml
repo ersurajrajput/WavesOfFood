@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- for android 12 - -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,11 +19,26 @@
         android:theme="@style/Theme.WavesOfFood"
         tools:ignore="SelectedPhotoAccess">
         <activity
+            android:name=".ui.res.AddNewAddressActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.res.ResAllReviewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.res.EditFoodItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.res.ResProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.res.AddNewFoodItemActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.res.ResHomeActivity"
             android:exported="true" />
@@ -40,11 +57,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.users.UserSignUpActivity"
@@ -56,6 +69,9 @@
         <meta-data
             android:name="CLOUDINARY_URL"
             android:value="${cloudinary_url}" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="" />
     </application>
 
 </manifest>

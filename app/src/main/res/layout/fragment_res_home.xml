@@ -42,16 +42,16 @@
                     android:textColor="@color/orange"
                     android:fontFamily="@font/sen_bold"/>
                 <TextView
-                    android:id="@+id/addressName"
+                    android:id="@+id/tvResAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Suraj Lab Office"
+                    android:text="Add Your Adress"
                     android:layout_below="@id/txtLocation"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_down"
-                    android:layout_toEndOf="@id/addressName"
+                    android:layout_toEndOf="@id/tvResAddress"
                     android:layout_below="@id/txtLocation"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"
@@ -154,6 +154,7 @@
                 android:fontFamily="@font/sen_regular"
                 android:textSize="20sp"/>
             <TextView
+                android:id="@+id/tvSeeAllReviews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/SeeAllReviews"

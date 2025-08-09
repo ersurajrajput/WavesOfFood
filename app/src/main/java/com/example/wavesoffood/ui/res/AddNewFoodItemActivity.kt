@@ -51,7 +51,7 @@ class AddNewFoodItemActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        initConfig()
+
         //firebase config
         FirebaseApp.initializeApp(applicationContext)
         var db = Firebase.database(BuildConfig.FIREBASE_DB_URL)
@@ -113,7 +113,6 @@ class AddNewFoodItemActivity : AppCompatActivity() {
             var foodPrice = binding.etFoodPrice.text.toString().trim()
             var foodDesc = binding.etFoodDesc.text.toString().trim()
             var resID = sharedPreferences.getString("resID", null)
-            Toast.makeText(applicationContext, resID.toString(), Toast.LENGTH_SHORT).show()
             if (foodDesc.isEmpty() || foodPrice.isEmpty() || foodName.isEmpty() || foodCat.isEmpty()) {
                 Toast.makeText(applicationContext, "All field are required", Toast.LENGTH_SHORT)
                     .show()
@@ -134,7 +133,6 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                         binding.successLayout.findViewById<LinearLayout>(R.id.ll2).visibility =
                             View.VISIBLE
 
-                        Toast.makeText(applicationContext, "started", Toast.LENGTH_SHORT).show()
 
                     }
 
@@ -143,7 +141,6 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                         bytes: Long,
                         totalBytes: Long
                     ) {
-                        Toast.makeText(applicationContext, "Uploading", Toast.LENGTH_SHORT).show()
 
                     }
 
@@ -160,7 +157,9 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                             foodCat,
                             foodPrice.toIntOrNull(),
                             url,
-                            resID
+                            resID,
+                            0,
+                            0,
                         )
 //                   var myFoodItemRef = dbFoodItemRef.setValue(foodId)
                         dbFoodItemRef.child(foodId.toString()).setValue(foodItemModel)
@@ -200,7 +199,6 @@ class AddNewFoodItemActivity : AppCompatActivity() {
                         binding.successLayout.findViewById<LinearLayout>(R.id.ll1).visibility =
                             View.VISIBLE
 
-                        Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
 
                     }
 
@@ -242,12 +240,5 @@ class AddNewFoodItemActivity : AppCompatActivity() {
         return tempFile
     }
 
-    private fun initConfig() {
-        var config = HashMap<String, String>()
-        config.put("cloud_name", BuildConfig.cloudinary_cloud_name);
-        config.put("api_key", BuildConfig.cloudinary_api_key)
-        config.put("api_secret", BuildConfig.cloudinary_api_secret)
-//        config.put("secure", true);
-        MediaManager.init(this, config);
-    }
+
 }

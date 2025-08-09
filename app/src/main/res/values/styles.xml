@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom Tab Text Style -->
+    <style name="CustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+</resources>

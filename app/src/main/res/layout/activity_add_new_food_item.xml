@@ -88,13 +88,20 @@
                     android:text="Upload photo"
                     android:fontFamily="@font/sen_regular"
                     android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/ivFoodImgPreview"
+                <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/icon_upload_img"
-                    android:layout_marginTop="20sp"
-                    android:layout_below="@id/txtUploadPhoto"/>
+                    app:cardCornerRadius="20dp"
+
+                    android:layout_below="@id/txtUploadPhoto">
+                    <ImageView
+                        android:id="@+id/ivFoodImgPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/icon_upload"/>
+                </androidx.cardview.widget.CardView>
+
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl4"
@@ -184,10 +191,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtFoodDesc"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/bg_et2"
-                    android:hint="Lorem ipsum dolor sit amet, consectetur adips cing elit. Bibendum in vel, mattis et amet dui mauris turpis."
-                    android:minHeight="200dp"
+                    android:hint="Tell us something about your product"
                     android:padding="20dp" />
             </RelativeLayout>
             <Button

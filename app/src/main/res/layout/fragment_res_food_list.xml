@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.res.Fragments.ResFoodListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
 
-</FrameLayout>
+     android:orientation="vertical">
+     <RelativeLayout
+         android:id="@+id/rl1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <ImageButton
+             android:id="@+id/ibBack"
+             android:layout_width="50dp"
+             android:layout_height="50dp"
+             android:src="@drawable/icon_back"
+             android:background="@drawable/bg_white_circle"
+             android:layout_centerVertical="true"
+             android:backgroundTint="@color/back_btn_bg_color"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="My Food List"
+             android:layout_toEndOf="@id/ibBack"
+             android:layout_centerVertical="true"
+             android:layout_marginStart="20dp"
+             android:fontFamily="@font/sen_bold"
+             android:textSize="20sp"/>
+
+
+
+     </RelativeLayout>
+
+
+         <com.google.android.material.tabs.TabLayout
+             android:layout_marginTop="20dp"
+             android:id="@+id/tabItem"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:tabIndicatorColor="@color/orange"
+             app:tabTextAppearance="@style/CustomTabText"/>
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_marginTop="20dp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="100dp"
+         android:id="@+id/recyclerView"/>
+</ScrollView>
+
+
+
+
+ </LinearLayout>
+
+</RelativeLayout>
