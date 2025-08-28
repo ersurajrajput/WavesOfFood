@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
+    android:scrollbars="none"
     tools:context=".fragments.SearchFragment">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -37,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="@id/etSearch"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/icon_search"
-        android:tint="@color/white"
+        app:tint="@color/white"
         android:background="@drawable/bg_primary_btn_green"
         app:layout_constraintStart_toStartOf="@id/etSearch"/>
     <TextView

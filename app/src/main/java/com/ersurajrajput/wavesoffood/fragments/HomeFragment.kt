@@ -13,13 +13,16 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.ersurajrajput.wavesoffood.R
+import com.ersurajrajput.wavesoffood.adapters.NotificationAdapter
 import com.ersurajrajput.wavesoffood.adapters.PopularFoodAdapter
 import com.ersurajrajput.wavesoffood.databinding.FragmentHomeBinding
 import com.ersurajrajput.wavesoffood.models.FoodItemModel
+import com.ersurajrajput.wavesoffood.models.NotificationModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +89,10 @@ class HomeFragment : Fragment() {
         binding.tvViewMenu.setOnClickListener {
             bottomSheetDialog.show()
         }
+
+
+
+
 
 
     }
