@@ -5,29 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ersurajrajput.wavesoffood.R
+import com.ersurajrajput.wavesoffood.adapters.PopularFoodAdapter
+import com.ersurajrajput.wavesoffood.databinding.FragmentSearchBinding
+import com.ersurajrajput.wavesoffood.models.FoodItemModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentSearchBinding
+    private lateinit var foodList: ArrayList<FoodItemModel>
+    private lateinit var originalFoodList: ArrayList<FoodItemModel>
+    private lateinit var searchFoodAdapter: PopularFoodAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,26 +27,49 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        binding = FragmentSearchBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //prepare data
+        foodList = ArrayList()
+        originalFoodList = ArrayList()
+        var img = "https://images.unsplash.com/photo-1747654168933-a0a0c9d78d68?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+
+        for (i in 1..10){
+            originalFoodList.add(FoodItemModel(i.toString(),"Pizaa "+i.toString(),img,10.toString()))
+        }
+        foodList.addAll(originalFoodList)
+
+        //prepare adapter
+        searchFoodAdapter = PopularFoodAdapter(foodList,requireContext())
+
+        // prepare recycler view
+        binding.menuRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        //bind both
+        binding.menuRecyclerView.adapter = searchFoodAdapter
+
+
+        // search logic
+        binding.btnSearch.setOnClickListener {
+            var q = binding.etSearch.text.toString()
+            foodList.clear()
+            foodList.addAll(originalFoodList.filter {
+                it.foodName?.contains(q,false) ?: false
+            })
+            searchFoodAdapter.notifyDataSetChanged()
+
+        }
+
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
     }
 }
