@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:minHeight="600dp"
     tools:context=".OnBoradingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,33 +36,51 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnNext"
+            android:id="@+id/btnUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/bg_primary_btn_green"
             android:fontFamily="@font/yeonsungregular"
             android:padding="20sp"
-            android:text="Next"
+            android:text="User Login"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/textView"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRestorent"
+            android:layout_width="0dp"
+            android:padding="20dp"
+            android:background="@drawable/bg_hollo_btn_green"
+            android:textColor="@color/green"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Restorent"
+            android:fontFamily="@font/yeonsungregular"
+
+            app:layout_constraintEnd_toEndOf="@+id/btnUser"
+            app:layout_constraintStart_toStartOf="@+id/btnUser"
+            app:layout_constraintTop_toBottomOf="@+id/btnUser" />
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:fontFamily="@font/yeonsungregular"
             android:text="Design By\n Suraj Rajput"
             android:textAlignment="center"
             android:textColor="@color/green"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/btnNext"
-            app:layout_constraintStart_toStartOf="@+id/btnNext"
-            app:layout_constraintTop_toBottomOf="@+id/btnNext" />
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnRestorent"
+
+            app:layout_constraintStart_toStartOf="@id/btnRestorent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -10,6 +10,7 @@ import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.adapters.CartItemAdapter
 import com.ersurajrajput.wavesoffood.databinding.FragmentCartBinding
 import com.ersurajrajput.wavesoffood.models.CartItemModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class CartFragment : Fragment() {
@@ -51,6 +52,18 @@ class CartFragment : Fragment() {
 
         //link both
         binding.cartRecyclerView.adapter = cartItemAdapter
+
+
+
+        binding.btnProceed.setOnClickListener {
+            var successBottomSheet = BottomSheetDialog(requireContext())
+            var successView = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_success,null)
+            successBottomSheet.setContentView(successView)
+            successBottomSheet.show()
+            successView.findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btnBack).setOnClickListener {
+                successBottomSheet.dismiss()
+            }
+        }
 
     }
 

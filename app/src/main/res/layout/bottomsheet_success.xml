@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="100dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Congrats \nYour Order Placed"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:fontFamily="@font/yeonsungregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/ivSucceess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_succes"
+        app:layout_constraintTop_toBottomOf="@id/txt"
+        app:layout_constraintStart_toStartOf="@id/txt"
+        app:layout_constraintEnd_toEndOf="@id/txt"
+        android:layout_marginTop="32dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:padding="20dp"
+        android:background="@drawable/bg_primary_btn_green"
+        app:layout_constraintTop_toBottomOf="@id/ivSucceess"
+        app:layout_constraintStart_toStartOf="@id/ivSucceess"
+        app:layout_constraintEnd_toEndOf="@id/ivSucceess"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:fontFamily="@font/yeonsungregular"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

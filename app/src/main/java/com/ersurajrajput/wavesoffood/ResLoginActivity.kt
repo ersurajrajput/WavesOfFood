@@ -6,28 +6,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.ersurajrajput.wavesoffood.databinding.ActivityOnBoradingBinding
+import com.ersurajrajput.wavesoffood.databinding.ActivityResLoginBinding
 
-class OnBoradingActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOnBoradingBinding
+class ResLoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityResLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityOnBoradingBinding.inflate(layoutInflater)
+        binding = ActivityResLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-         binding.btnUser.setOnClickListener {
-             startActivity(Intent(this, LoginActivity::class.java))
-             finish()
-         }
-        binding.btnRestorent.setOnClickListener {
-            startActivity(Intent(this, ResLoginActivity::class.java))
+        binding.tvNewUser.setOnClickListener {
+            startActivity(Intent(this, ResRejisterActivity::class.java))
             finish()
         }
     }
