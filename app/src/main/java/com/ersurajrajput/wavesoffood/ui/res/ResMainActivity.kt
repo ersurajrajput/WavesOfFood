@@ -29,6 +29,10 @@ class ResMainActivity : AppCompatActivity() {
             startActivity(Intent(this, ResAllFoodItemsActivity::class.java))
 
         }
+        binding.llProfile.setOnClickListener {
+            startActivity(Intent(this, ResProfileActivity::class.java))
+
+        }
 
 
 
