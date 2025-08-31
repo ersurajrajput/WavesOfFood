@@ -23,7 +23,7 @@ class PopularFoodAdapter(var foodList: ArrayList<FoodItemModel>,val context: Con
         position: Int
     ) {
         holder.foodName.text = foodList[position].foodName
-        holder.foodPrice.text = foodList[position].foodPrice
+        holder.foodPrice.text = foodList[position].foodPrice.toString()
         Glide.with(context).load(foodList[position].foodImg).placeholder(R.drawable.ic_launcher_background).into(holder.foodImg)
 
 

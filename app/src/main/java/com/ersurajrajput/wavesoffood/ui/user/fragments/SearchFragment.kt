@@ -1,4 +1,4 @@
-package com.ersurajrajput.wavesoffood.fragments
+package com.ersurajrajput.wavesoffood.ui.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -41,7 +41,7 @@ class SearchFragment : Fragment() {
 
 
         for (i in 1..10){
-            originalFoodList.add(FoodItemModel(i.toString(),"Pizaa "+i.toString(),img,10.toString()))
+            originalFoodList.add(FoodItemModel(i.toString(),"Pizaa "+i.toString(),img,10))
         }
         foodList.addAll(originalFoodList)
 

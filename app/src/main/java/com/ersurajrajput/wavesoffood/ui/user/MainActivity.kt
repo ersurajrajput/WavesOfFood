@@ -1,16 +1,15 @@
-package com.ersurajrajput.wavesoffood
+package com.ersurajrajput.wavesoffood.ui.user
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.adapters.NotificationAdapter
 import com.ersurajrajput.wavesoffood.databinding.ActivityMainBinding
 import com.ersurajrajput.wavesoffood.models.NotificationModel
@@ -43,9 +42,14 @@ class MainActivity : AppCompatActivity() {
         notificationList = ArrayList()
 
         for (i in 1..5){
-            notificationList.add(NotificationModel(notificationTitle = "hello", notificationImg = img))
+            notificationList.add(
+                NotificationModel(
+                    notificationTitle = "hello",
+                    notificationImg = img
+                )
+            )
         }
-        notificationAdapter = NotificationAdapter(this,notificationList)
+        notificationAdapter = NotificationAdapter(this, notificationList)
 
         // target bottom sheet
         var notificationBottomSheet = BottomSheetDialog(this)

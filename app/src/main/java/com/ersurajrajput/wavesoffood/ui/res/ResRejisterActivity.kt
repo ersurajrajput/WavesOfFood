@@ -1,5 +1,6 @@
-package com.ersurajrajput.wavesoffood
+package com.ersurajrajput.wavesoffood.ui.res
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.databinding.ActivityResRejisterBinding
 import com.ersurajrajput.wavesoffood.models.ResModel
 import com.google.firebase.Firebase
@@ -45,7 +47,7 @@ class ResRejisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            resModel = ResModel("0",resName,resPass,userName,resEmail);
+            resModel = ResModel("0", resName, resPass, userName, resEmail);
             rejister(resEmail,resPass)
 
         }
@@ -59,8 +61,10 @@ class ResRejisterActivity : AppCompatActivity() {
                 var userId = FirebaseAuth.getInstance().currentUser!!.uid
                 var myRes = database.getReference("res")
                 myRes.child(userId).setValue(resModel)
+                startActivity(Intent(this, ResMainActivity::class.java))
+                finish()
             }else{
-                AlertDialog.Builder(this).setTitle("Error").setMessage(task.exception?.message).setPositiveButton("Ok"){dialog,which ->
+                AlertDialog.Builder(this).setTitle("Error").setMessage(task.exception?.message).setPositiveButton("Ok"){ dialog, which ->
                     dialog.dismiss()
                 }.show()
                 Toast.makeText(this,task.exception?.message, Toast.LENGTH_SHORT).show()
@@ -70,5 +74,3 @@ class ResRejisterActivity : AppCompatActivity() {
         }
     }
 }
-
-

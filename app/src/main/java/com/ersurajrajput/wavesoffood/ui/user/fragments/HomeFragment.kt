@@ -1,4 +1,4 @@
-package com.ersurajrajput.wavesoffood.fragments
+package com.ersurajrajput.wavesoffood.ui.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
         var foodList = ArrayList<FoodItemModel>()
 
         for (i in 1..5){
-            foodList.add(FoodItemModel(i.toString(),"Pizaa "+i.toString(),img,10.toString()))
+            foodList.add(FoodItemModel(i.toString(),"Pizaa "+i.toString(),img,10))
         }
 
         //prepare adapter

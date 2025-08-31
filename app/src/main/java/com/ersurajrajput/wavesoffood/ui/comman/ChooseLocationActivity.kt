@@ -1,4 +1,4 @@
-package com.ersurajrajput.wavesoffood
+package com.ersurajrajput.wavesoffood.ui.comman
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -6,9 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
+import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.databinding.ActivityChooseLocationBinding
-
 
 class ChooseLocationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChooseLocationBinding
@@ -29,7 +28,7 @@ class ChooseLocationActivity : AppCompatActivity() {
         city.add("gurugram")
 
 
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,city)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, city)
 
         binding.locationAutoComplete.setAdapter(adapter)
     }

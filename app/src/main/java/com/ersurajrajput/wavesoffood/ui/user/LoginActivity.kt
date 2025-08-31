@@ -1,4 +1,4 @@
-package com.ersurajrajput.wavesoffood
+package com.ersurajrajput.wavesoffood.ui.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.ersurajrajput.wavesoffood.databinding.ActivityRegisterBinding
+import com.ersurajrajput.wavesoffood.R
+import com.ersurajrajput.wavesoffood.ui.user.RegisterActivity
+import com.ersurajrajput.wavesoffood.databinding.ActivityLoginBinding
 
-class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -21,8 +23,9 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-        binding.tvOldUser.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+        binding.tvNewUser.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
+
     }
 }

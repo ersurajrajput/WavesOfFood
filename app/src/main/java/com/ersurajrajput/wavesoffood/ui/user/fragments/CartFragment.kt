@@ -1,10 +1,11 @@
-package com.ersurajrajput.wavesoffood.fragments
+package com.ersurajrajput.wavesoffood.ui.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.adapters.CartItemAdapter
@@ -60,7 +61,7 @@ class CartFragment : Fragment() {
             var successView = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_success,null)
             successBottomSheet.setContentView(successView)
             successBottomSheet.show()
-            successView.findViewById<androidx.appcompat.widget.AppCompatButton>(R.id.btnBack).setOnClickListener {
+            successView.findViewById<AppCompatButton>(R.id.btnBack).setOnClickListener {
                 successBottomSheet.dismiss()
             }
         }

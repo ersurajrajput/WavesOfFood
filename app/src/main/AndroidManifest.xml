@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,33 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WavesOfFood">
         <activity
-            android:name=".ResMainActivity"
+            android:name=".ui.res.ResAllFoodItemsActivity"
             android:exported="false" />
         <activity
-            android:name=".ResRejisterActivity"
+            android:name=".ui.res.ResAddFoodItemActivity"
             android:exported="false" />
         <activity
-            android:name=".ResLoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".ChooseLocationActivity"
-            android:exported="true" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OnBoradingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
+            android:name=".ui.res.ResMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +30,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.res.ResRejisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.res.ResLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.comman.ChooseLocationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.user.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.comman.OnBoradingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

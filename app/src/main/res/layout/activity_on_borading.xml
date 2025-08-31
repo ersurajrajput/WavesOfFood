@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:minHeight="600dp"
-    tools:context=".OnBoradingActivity">
+    tools:context=".ui.comman.OnBoradingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
