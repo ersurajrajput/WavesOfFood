@@ -14,8 +14,12 @@ import com.ersurajrajput.wavesoffood.adapters.res.ReqOrdersAdapter
 import com.ersurajrajput.wavesoffood.databinding.ActivityResMainBinding
 import com.ersurajrajput.wavesoffood.databinding.BottomSheetOrdersBinding
 import com.ersurajrajput.wavesoffood.databinding.LayoutOrderBinding
+import com.ersurajrajput.wavesoffood.helpers.LoginHelper
+import com.ersurajrajput.wavesoffood.helpers.ResSharedRefHelper
 import com.ersurajrajput.wavesoffood.models.OrderModel
+import com.ersurajrajput.wavesoffood.ui.comman.OnBoradingActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlin.math.log
 
 class ResMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResMainBinding
@@ -25,6 +29,8 @@ class ResMainActivity : AppCompatActivity() {
 
     private lateinit var reqOrderRecyclerView: RecyclerView
     private lateinit var pendingOrdersRecyclerView: RecyclerView
+    private lateinit var resSharedRefHelper: ResSharedRefHelper
+    private lateinit var loginHelper: LoginHelper
 
 
 
@@ -38,6 +44,12 @@ class ResMainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //init
+        loginHelper = LoginHelper(this)
+        resSharedRefHelper = ResSharedRefHelper(this)
+
+        /// login chake
+        loginHelper.LoggedIn()
 
         binding.llAddFoodItem.setOnClickListener {
             startActivity(Intent(this, ResAddFoodItemActivity::class.java))
@@ -49,6 +61,11 @@ class ResMainActivity : AppCompatActivity() {
         binding.llProfile.setOnClickListener {
             startActivity(Intent(this, ResProfileActivity::class.java))
 
+        }
+        binding.llLogOut.setOnClickListener {
+            resSharedRefHelper.clearRes()
+            startActivity(Intent(this, OnBoradingActivity::class.java))
+            finish()
         }
 
         ////// Order Req

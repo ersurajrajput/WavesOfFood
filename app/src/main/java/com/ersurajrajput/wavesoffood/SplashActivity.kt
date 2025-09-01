@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ersurajrajput.wavesoffood.helpers.LoginHelper
+import com.ersurajrajput.wavesoffood.helpers.UserSharedRefHelper
 import com.ersurajrajput.wavesoffood.ui.comman.OnBoradingActivity
 
 
@@ -22,8 +24,11 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var loginHelper = LoginHelper(this)
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, OnBoradingActivity::class.java))
+            loginHelper.RouteHelper()
+//            var userSharedRefHelper = UserSharedRefHelper(this)
+//            userSharedRefHelper.clearUser()
         },3000)
 
 
