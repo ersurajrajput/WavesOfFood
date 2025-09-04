@@ -9,7 +9,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.ui.user.RegisterActivity
 import com.ersurajrajput.wavesoffood.databinding.ActivityLoginBinding
-import com.ersurajrajput.wavesoffood.helpers.UserSharedRefHelper
 import com.ersurajrajput.wavesoffood.models.UserModel
 
 class LoginActivity : AppCompatActivity() {
@@ -29,11 +28,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         var userModeled = UserModel()
-        var userSharedRefHelper = UserSharedRefHelper(this)
+
 
         binding.btnLogin.setOnClickListener {
             userModeled.userName = binding.etEmail.text.toString()
-            userSharedRefHelper.saveuser(userModeled)
+
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

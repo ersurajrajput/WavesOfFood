@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoginHelper(var context: Context) {
      private lateinit var auth: FirebaseAuth
-     private lateinit var sharedRefHelper: ResSharedRefHelper
+    var sharedPreferences = context.getSharedPreferences("WavesOfFood", Context.MODE_PRIVATE)
 
     public fun LoggedIn(){
         auth = FirebaseAuth.getInstance()
@@ -23,10 +23,10 @@ class LoginHelper(var context: Context) {
     public fun RouteHelper(){
         var intent: Intent
         auth = FirebaseAuth.getInstance()
-        sharedRefHelper = ResSharedRefHelper(context)
+
         if (auth.currentUser !=null){
 
-        if (sharedRefHelper.getType()=="user"){
+        if (sharedPreferences.getString("type","")=="user"){
             intent = Intent(context, MainActivity::class.java)
 
         }else{

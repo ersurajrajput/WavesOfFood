@@ -15,10 +15,12 @@ import com.ersurajrajput.wavesoffood.databinding.ActivityResMainBinding
 import com.ersurajrajput.wavesoffood.databinding.BottomSheetOrdersBinding
 import com.ersurajrajput.wavesoffood.databinding.LayoutOrderBinding
 import com.ersurajrajput.wavesoffood.helpers.LoginHelper
-import com.ersurajrajput.wavesoffood.helpers.ResSharedRefHelper
 import com.ersurajrajput.wavesoffood.models.OrderModel
 import com.ersurajrajput.wavesoffood.models.ResModel
 import com.ersurajrajput.wavesoffood.ui.comman.OnBoradingActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -35,11 +37,12 @@ class ResMainActivity : AppCompatActivity() {
 
     private lateinit var reqOrderRecyclerView: RecyclerView
     private lateinit var pendingOrdersRecyclerView: RecyclerView
-    private lateinit var resSharedRefHelper: ResSharedRefHelper
+
     private lateinit var loginHelper: LoginHelper
     private lateinit var db: FirebaseDatabase
     private lateinit var resModel: ResModel
     private lateinit var auth: FirebaseAuth
+
 
 
 
@@ -57,22 +60,9 @@ class ResMainActivity : AppCompatActivity() {
         db = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         loginHelper = LoginHelper(this)
-        resSharedRefHelper = ResSharedRefHelper(this)
-        var resId = resSharedRefHelper.getResId()
-        var myResRef = db.getReference(resId)
-        myResRef.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists() ){
-                    resModel = snapshot.getValue(ResModel::class.java)!!
-                    binding.tvAllOrders.text = resModel.resTotalOrders.toString()
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
 
-        })
+
 
 
 
@@ -95,8 +85,9 @@ class ResMainActivity : AppCompatActivity() {
 
         }
         binding.llLogOut.setOnClickListener {
-            resSharedRefHelper.clearRes()
+
             auth.signOut()
+
             startActivity(Intent(this, OnBoradingActivity::class.java))
             finish()
         }

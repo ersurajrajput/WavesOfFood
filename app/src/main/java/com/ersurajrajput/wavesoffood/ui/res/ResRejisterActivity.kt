@@ -1,5 +1,6 @@
 package com.ersurajrajput.wavesoffood.ui.res
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +15,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.databinding.ActivityResRejisterBinding
-import com.ersurajrajput.wavesoffood.helpers.ResSharedRefHelper
 import com.ersurajrajput.wavesoffood.models.ResModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -52,6 +52,7 @@ class ResRejisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
 
+
         binding.btnGoogle.setOnClickListener {
             var googleSignInOptions =
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
@@ -59,7 +60,7 @@ class ResRejisterActivity : AppCompatActivity() {
                 ).requestEmail().build()
             googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
              
-            GoogleLogin()
+            GoogleSignInHeper()
         }
         binding.btnRegister.setOnClickListener {
             if (!inputChacker()) {
@@ -71,9 +72,10 @@ class ResRejisterActivity : AppCompatActivity() {
 
     }
 
-    private fun GoogleLogin() {
+    private fun GoogleSignInHeper() {
 
         var signinIntent = googleSignInClient.signInIntent
+        googleSignInClient.signOut()
         launcher.launch(signinIntent)
 
 
@@ -87,7 +89,12 @@ class ResRejisterActivity : AppCompatActivity() {
                 if (!snapshot.exists()) {
                     redDbRef.child(uid).setValue(resModel).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            var sharedPreferences = getSharedPreferences("WavesOfFood", Context.MODE_PRIVATE)
+                            var editor = sharedPreferences.edit()
+                            editor.putString("type","res")
+                            editor.apply()
                             updateUI()
+
                         } else {
                             showError(task.exception?.message.toString())
                         }
