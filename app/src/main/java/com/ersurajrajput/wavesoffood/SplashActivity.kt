@@ -11,9 +11,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.ersurajrajput.wavesoffood.helpers.LoginHelper
 import com.ersurajrajput.wavesoffood.helpers.UserSharedRefHelper
 import com.ersurajrajput.wavesoffood.ui.comman.OnBoradingActivity
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SplashActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +26,12 @@ class SplashActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         var loginHelper = LoginHelper(this)
         Handler(Looper.getMainLooper()).postDelayed({
             loginHelper.RouteHelper()
-//            var userSharedRefHelper = UserSharedRefHelper(this)
-//            userSharedRefHelper.clearUser()
+
+
         },3000)
 
 

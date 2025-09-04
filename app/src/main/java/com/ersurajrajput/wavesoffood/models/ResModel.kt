@@ -12,4 +12,5 @@ data class ResModel(
     var resBalance: Double?=null,
     var resStatus: String?=null,
     var resToken: String?=null,
+    var resTotalOrders: Int?=null
 )

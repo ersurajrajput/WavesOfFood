@@ -7,6 +7,7 @@ class ResSharedRefHelper(var context: Context) {
     var sharedPreferences = context.getSharedPreferences("WavesOfFood", Context.MODE_PRIVATE)
     public fun saveRes(resModel: ResModel){
         val editor = sharedPreferences.edit()
+        editor.putString("resId",resModel.resID)
         editor.putString("resName",resModel.resName)
         editor.putString("resEmail",resModel.resEmail)
         editor.putString("resPhone",resModel.resMobile)
@@ -49,6 +50,9 @@ class ResSharedRefHelper(var context: Context) {
     }
     public fun getType(): String{
         return sharedPreferences.getString("type","")!!
+    }
+    public fun getResId(): String{
+        return sharedPreferences.getString("resId","")!!
     }
 
 }

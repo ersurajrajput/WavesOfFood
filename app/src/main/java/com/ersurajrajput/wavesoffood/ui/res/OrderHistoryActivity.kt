@@ -62,6 +62,16 @@ class OrderHistoryActivity : AppCompatActivity() {
                 orderStatus = "delivered"
             ))
         }
+        for (i in 1..5){
+            orderList.add(OrderModel(
+                foodImg = img,
+                foodName = "pizaa",
+                orderQuantity = 10,
+                totalPrice = 100,
+                orderStatus = "cancel"
+            ))
+        }
+    
         adapter = OrdersAdapter(this, orderList)
         recyclerView = binding.ordersHistoryRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)

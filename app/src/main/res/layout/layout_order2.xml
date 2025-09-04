@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:padding="20dp"
+    android:background="@drawable/bg_rec_white"
     android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
@@ -110,5 +113,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvStatus"
         app:layout_constraintEnd_toStartOf="@+id/tvStatus"
         app:layout_constraintTop_toTopOf="@+id/tvStatus" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:background="@drawable/bg_cercle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFoodName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvFoodName">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

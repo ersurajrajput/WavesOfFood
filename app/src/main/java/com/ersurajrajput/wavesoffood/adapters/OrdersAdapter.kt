@@ -1,8 +1,11 @@
 package com.ersurajrajput.wavesoffood.adapters
 
 import android.content.Context
+import android.graphics.Color
+import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ersurajrajput.wavesoffood.R
@@ -27,6 +30,18 @@ class OrdersAdapter(var context: Context,var orderList: ArrayList<OrderModel>): 
         holder.foodQuantity.text = orderList[position].orderQuantity.toString()
         holder.totalPrice.text = orderList[position].totalPrice.toString()
         holder.status.text = orderList[position].orderStatus
+        if (orderList[position].orderStatus.equals("req")){
+            holder.statusLayout.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context,R.color.lightRed)
+        }
+        if (orderList[position].orderStatus.equals("running")){
+            holder.statusLayout.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context,R.color.yello)
+        }
+        if (orderList[position].orderStatus.equals("delivered")){
+            holder.statusLayout.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context,R.color.green)
+        }
+        if (orderList[position].orderStatus.equals("cancel")){
+            holder.statusLayout.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context,R.color.red)
+        }
 
         Glide.with(context).load(orderList[position].foodImg).placeholder(R.drawable.ic_launcher_background).into(holder.foodImg)
 
@@ -42,6 +57,7 @@ class OrdersAdapter(var context: Context,var orderList: ArrayList<OrderModel>): 
         var foodQuantity = binding.tvOrderQuantity
         var totalPrice = binding.tvTotalPrice
         var status = binding.tvStatus
+        var statusLayout = binding.statusLayout
 
 
     }

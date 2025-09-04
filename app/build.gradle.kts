@@ -67,4 +67,11 @@ dependencies {
 
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    //lottie animation
+
+    implementation("com.airbnb.android:lottie:3.4.0")
+
+    //google signin
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 }
