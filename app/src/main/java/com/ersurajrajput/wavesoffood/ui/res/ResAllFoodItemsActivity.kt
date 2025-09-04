@@ -1,6 +1,7 @@
 package com.ersurajrajput.wavesoffood.ui.res
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,12 +12,19 @@ import com.ersurajrajput.wavesoffood.R
 import com.ersurajrajput.wavesoffood.adapters.res.ResAllFoodItemAdapter
 import com.ersurajrajput.wavesoffood.databinding.ActivityResAllFoodItemsBinding
 import com.ersurajrajput.wavesoffood.models.FoodItemModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ResAllFoodItemsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResAllFoodItemsBinding
     private lateinit var foodItemList: ArrayList<FoodItemModel>
     private lateinit var resAllFoodItemAdapter: ResAllFoodItemAdapter
     private lateinit var resAllFoodItemRecyclerView: RecyclerView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,22 +35,37 @@ class ResAllFoodItemsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // sample data
-        var img = "https://images.unsplash.com/photo-1747654168933-a0a0c9d78d68?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        // init
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
         foodItemList = ArrayList()
+        var uid = auth.currentUser?.uid
+        var foodItemDbRef = database.getReference("FoodItems")
+        var q = foodItemDbRef.orderByChild("resId").equalTo(uid)
+        q.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    foodItemList.clear()
+                    for (foodItemSnapshot in snapshot.children){
+                        var foodItem = foodItemSnapshot.getValue(FoodItemModel::class.java)
+                        foodItemList.add(foodItem!!)
+                    }
+                    resAllFoodItemAdapter.notifyDataSetChanged()
+                }else{
+                    Toast.makeText(this@ResAllFoodItemsActivity,"No Food Items", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        for (i in 1..10) {
-            foodItemList.add(
-                FoodItemModel(
-                    foodId = "1",
-                    foodName = "pizaa",
-                    foodImg = img,
-                    resName = "Ladli Restaurant",
-                    foodPrice = 70
-                )
-            )
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
 
-        }
+        })
+
+
+
+
+
         // prepare adapter
         resAllFoodItemAdapter = ResAllFoodItemAdapter(foodItemList, this)
 

@@ -141,8 +141,13 @@ class ResLoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email,pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    var sharedPreferences = getSharedPreferences("WavesOfFood", Context.MODE_PRIVATE)
+                    var editor = sharedPreferences.edit()
+                    editor.putString("type","res")
+                    editor.apply()
                     updateUI()
                     Toast.makeText(this@ResLoginActivity,"Succes",Toast.LENGTH_SHORT).show()
+
 
                 } else {
                     showError(task.exception?.message.toString())

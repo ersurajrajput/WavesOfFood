@@ -15,6 +15,7 @@ import com.ersurajrajput.wavesoffood.databinding.ActivityResMainBinding
 import com.ersurajrajput.wavesoffood.databinding.BottomSheetOrdersBinding
 import com.ersurajrajput.wavesoffood.databinding.LayoutOrderBinding
 import com.ersurajrajput.wavesoffood.helpers.LoginHelper
+import com.ersurajrajput.wavesoffood.models.FoodItemModel
 import com.ersurajrajput.wavesoffood.models.OrderModel
 import com.ersurajrajput.wavesoffood.models.ResModel
 import com.ersurajrajput.wavesoffood.ui.comman.OnBoradingActivity
@@ -32,18 +33,12 @@ import kotlin.math.log
 class ResMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResMainBinding
     private lateinit var orderReqList: ArrayList<OrderModel>
-    private lateinit var orderPendingList: ArrayList<OrderModel>
-    private lateinit var orderList: ArrayList<OrderModel>
 
-    private lateinit var reqOrderRecyclerView: RecyclerView
-    private lateinit var pendingOrdersRecyclerView: RecyclerView
 
     private lateinit var loginHelper: LoginHelper
     private lateinit var db: FirebaseDatabase
-    private lateinit var resModel: ResModel
+
     private lateinit var auth: FirebaseAuth
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,9 +55,6 @@ class ResMainActivity : AppCompatActivity() {
         db = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         loginHelper = LoginHelper(this)
-
-
-
 
 
 
@@ -94,16 +86,19 @@ class ResMainActivity : AppCompatActivity() {
 
         ////// Order Req
         //prepare data
-        var img = "https://images.unsplash.com/photo-1747654168933-a0a0c9d78d68?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        var img =
+            "https://images.unsplash.com/photo-1747654168933-a0a0c9d78d68?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
         orderReqList = ArrayList()
-        for (i in 1..5){
-            orderReqList.add(OrderModel(
-                foodImg = img,
-                foodName = "pizaa",
-                orderQuantity = 10,
-                totalPrice = 100,
-            ))
+        for (i in 1..5) {
+            orderReqList.add(
+                OrderModel(
+                    foodImg = img,
+                    foodName = "pizaa",
+                    orderQuantity = 10,
+                    totalPrice = 100,
+                )
+            )
         }
         //prepare adapter
         val reqOrdersAdapter = ReqOrdersAdapter(this, orderReqList)
@@ -136,10 +131,6 @@ class ResMainActivity : AppCompatActivity() {
         }
 
         // all orders
-
-
-
-
 
 
     }

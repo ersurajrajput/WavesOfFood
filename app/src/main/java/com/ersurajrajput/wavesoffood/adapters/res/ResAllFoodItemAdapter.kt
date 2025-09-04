@@ -33,7 +33,9 @@ class ResAllFoodItemAdapter(var resFoodItemList: ArrayList<FoodItemModel>,var co
         holder.delete.setOnClickListener {
 
             AlertDialog.Builder(context).setTitle("Delete Item").setMessage("Are you sure to delete this item?").setPositiveButton("Yes"){dialog, which ->
-                resFoodItemList.removeAt(holder.bindingAdapterPosition)
+                var foodItemDbRef = com.google.firebase.database.FirebaseDatabase.getInstance().getReference("FoodItems")
+                foodItemDbRef.child(resFoodItemList[holder.bindingAdapterPosition].foodId!!).removeValue()
+                 resFoodItemList.removeAt(holder.bindingAdapterPosition)
                 notifyItemRemoved(holder.bindingAdapterPosition)
             }.setNegativeButton("No"){dialog, which ->
                 dialog.dismiss()
