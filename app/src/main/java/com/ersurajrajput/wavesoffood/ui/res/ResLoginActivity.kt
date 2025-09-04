@@ -66,6 +66,13 @@ class ResLoginActivity : AppCompatActivity() {
             startActivity(Intent(this, ResRejisterActivity::class.java))
         }
 
+        binding.btnLogin.setOnClickListener {
+            if (!inputChacker()){
+                return@setOnClickListener
+            }
+            emailPassRegister(binding.etEmail.text.toString(),binding.etPass.text.toString())
+        }
+
     }
 
     private fun GoogleLogin() {
@@ -112,7 +119,7 @@ class ResLoginActivity : AppCompatActivity() {
 
 
 
-        if (resEmail.isEmpty() || resPass.isEmpty() ) {
+        if (resEmail.isEmpty() || resPass.isEmpty()  ) {
             showError("All Fileds Are Required")
             return false
         }
@@ -127,6 +134,20 @@ class ResLoginActivity : AppCompatActivity() {
 
         return true
 
+    }
+
+    private fun emailPassRegister(email: String,pass: String) {
+
+        auth.signInWithEmailAndPassword(email,pass)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    updateUI()
+                    Toast.makeText(this@ResLoginActivity,"Succes",Toast.LENGTH_SHORT).show()
+
+                } else {
+                    showError(task.exception?.message.toString())
+                }
+            }
     }
 
 
